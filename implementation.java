@@ -3,19 +3,27 @@
 // implementation notes
 // frontend- dragout for destination names
 // destination names allowed (checked on frontend)
-import destination.DestNode;
+
+// import destination.DestNode;
 import java.util.*;
 
 
-public class test{
+public class implementation{
     public static void main(String args[]){
         //Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
+	Scanner s = new Scanner(System.in);
+	System.out.print("Enter a destination: ");
+	String tempSrc = s.next();
+	System.out.print("Enter a transportation method: ");
+	String tempMeth = s.next();
+	DestNode tempNode = new DestNode(tempSrc, tempMeth);
+        DestList.add(tempNode);
 
-        DestList.add(DestNode("Girvetz", "Biking"))
-        DestList.add(DestNode("Manzi", "Walking"))
-        System.out.println("DestList: " + DestList);
-
-
+	for(int i = 0; i < DestList.size(); i++){
+	    DestNode tempN = DestList.get(i);
+	    System.out.println(tempN.getSource() + ", " + tempN.getMethod());
+	// loop for actually printing
+	}
     }
 }
