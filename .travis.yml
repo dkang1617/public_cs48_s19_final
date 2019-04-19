@@ -1,0 +1,6 @@
+#language: java
+#java:
+#    - "java"
+language: node_js
+node_js:
+    - "node"
