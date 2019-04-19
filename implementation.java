@@ -13,10 +13,12 @@ public class implementation{
         //Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
 	Scanner s = new Scanner(System.in);
+	
 	System.out.print("Enter a destination: ");
 	String tempSrc = s.next();
 	System.out.print("Enter a transportation method: ");
 	String tempMeth = s.next();
+
 	DestNode tempNode = new DestNode(tempSrc, tempMeth);
         DestList.add(tempNode);
 
