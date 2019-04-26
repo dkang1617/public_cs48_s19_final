@@ -16,7 +16,7 @@ CLASSES = \
 	DestNode.java \
 	implementation.java \
 
-default: classes
+default: CLASSES
 
 classes: $(CLASSES: .java=.class)
 
