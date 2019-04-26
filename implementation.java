@@ -18,17 +18,14 @@ public class implementation{
         int c = 1;
 
         while (c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
-            System.out.print("Enter a destination, or \"1\" if no more: ");
+            System.out.print("Enter a destination, or \"done\" if no more: ");
             String tempSrc = s.nextLine();
-            System.out.println("   " + tempSrc + " test"); // testing
-            if (tempSrc == "1"){
+            if (tempSrc == "done"){
                 c = 0;
             }
             if (c == 1){ // only add node if tempSrc != 1
                 System.out.print("Enter a transportation method: ");
-                System.out.println("   " + tempSrc + " test"); // testing
                 String tempMeth = s.nextLine();
-                System.out.println("   " + tempSrc + " test " + tempMeth); // testing
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
             }

@@ -16,9 +16,16 @@ CLASSES = \
 	DestNode.java \
 	implementation.java \
 
+#TEST = \
+	DestNode.java \
+	implementation.java \
+	basicTests.java \
+
 default: classes
+#test: test
 
 classes: $(CLASSES:.java=.class)
+#test: $(TESTS:.java=.class)
 
 clean:
 	$(RM) *.class
