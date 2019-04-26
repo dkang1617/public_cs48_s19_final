@@ -18,7 +18,7 @@ CLASSES = \
 
 default: CLASSES
 
-classes: $(CLASSES: .java=.class)
+classes: $(CLASSES:.java=.class)
 
 clean:
 	$(RM) *.class
