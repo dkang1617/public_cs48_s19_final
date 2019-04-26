@@ -16,13 +16,16 @@ public class implementation{
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
         Scanner s = new Scanner(System.in);
 
-        while (s.next() != 1){
+        while (s.next() != "1" && DestList.size() != 10){
             System.out.print("Enter a destination, or \"1\" if no more: ");
             String tempSrc = s.next();
             System.out.print("Enter a transportation method: ");
             String tempMeth = s.next();
             DestNode tempNode = new DestNode(tempSrc, tempMeth);
             DestList.add(tempNode);
+        }
+        if (DestList.size() == 10){
+            System.out.print("The list can only contain 10 destinations. \n Your list is: ")
         }
 
 
