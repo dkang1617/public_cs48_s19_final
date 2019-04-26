@@ -20,12 +20,15 @@ public class implementation{
         while (c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
             System.out.print("Enter a destination, or \"1\" if no more: ");
             String tempSrc = s.next();
+            System.out.println("   " + tempSrc + " test"); // testing
             if (tempSrc == "1"){
                 c = 0;
             }
             if (c == 1){ // only add node if tempSrc != 1
                 System.out.print("Enter a transportation method: ");
+                System.out.println("   " + tempSrc + " test"); // testing
                 String tempMeth = s.next();
+                System.out.println("   " + tempSrc + " test " + tempMeth); // testing
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
             }
@@ -39,7 +42,7 @@ public class implementation{
 
         for(int i = 0; i < DestList.size(); i++){
             DestNode tempN = DestList.get(i);
-            System.out.println(" " + i + 1 + ". " + tempN.getSource() + ", " + tempN.getMethod());
+            System.out.println(" " + (i + 1) + ". " + tempN.getSource() + ", " + tempN.getMethod());
             // loop for printing list
         }
     }
