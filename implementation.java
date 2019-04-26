@@ -27,8 +27,9 @@ public class implementation{
             if(c == 1){ // only add node if tempSrc != 1
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.nextLine();
-                if(Objects.equals(tempMeth, new String("\n"))){
+                if(Objects.equals(tempMeth, new String(""))){
                     tempMeth = "walking"; // default is walking
+		    System.out.println("      -defaulted to walking- \n");
                 }
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
