@@ -17,22 +17,17 @@ public class implementation{
         Scanner s = new Scanner(System.in);
         int c = 1;
 
-/* DEBUG HELP NEEDED HERE:
-When "done" is inputted to Scanner
-string tempSrc should set c = 0
-and not add a new node */
-
-        while (c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
+        while(c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
             System.out.println(c + "test");
 
             System.out.print("Enter a destination, or \"done\" if no more: ");
             String tempSrc = s.nextLine();
             System.out.println(tempSrc + "test");
-            if (Objects.equals(tempSrc, new String("done"))){
+            if(Objects.equals(tempSrc, new String("done"))){
                 c = 0;
                 System.out.println(c + "test");
             }
-            if (c == 1){ // only add node if tempSrc != 1
+            if(c == 1){ // only add node if tempSrc != 1
                 System.out.println(c + "test");
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.nextLine();
@@ -41,16 +36,20 @@ and not add a new node */
             }
         }
 
-        if (DestList.size() == 10){
+        if(DestList.size() == 10){
             System.out.println("The list can only contain 10 destinations. ");
         }
-
-        System.out.println("Your list is: ");
-
-        for(int i = 0; i < DestList.size(); i++){
-            DestNode tempN = DestList.get(i);
-            System.out.println(" " + (i + 1) + ". " + tempN.getSource() + ", " + tempN.getMethod());
-            // loop for printing list
+        else if(DestList.size() != 0){
+            System.out.println("Your list is: ");
+            for(int i = 0; i < DestList.size(); i++){
+                DestNode tempN = DestList.get(i);
+                System.out.println(" " + (i + 1) + ". " + tempN.getSource() + ", " + tempN.getMethod());
+                // loop for printing list
+            }
         }
+        else{
+            System.out.println("No locations were added to the list.");
+        }
+
     }
 }
