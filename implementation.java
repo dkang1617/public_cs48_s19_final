@@ -15,7 +15,7 @@ public class implementation{
         // Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
         Scanner s = new Scanner(System.in);
-        boolean c = 1;
+        int c = 1;
 
         while (c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
             System.out.print("Enter a destination, or \"1\" if no more: ");
