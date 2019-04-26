@@ -23,7 +23,7 @@ public class implementation{
             if (tempSrc == "1"){
                 c = 0;
             }
-            if (c){ // only add node if tempSrc != 1
+            if (c == 1){ // only add node if tempSrc != 1
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.next();
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
