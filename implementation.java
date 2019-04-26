@@ -19,9 +19,9 @@ public class implementation{
 
         while(c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
 
-            System.out.print("Enter a destination, or \"done\" if no more: ");
+            System.out.print("Enter a destination, or input nothing if no more destinations are wanted: ");
             String tempSrc = s.nextLine();
-            if(Objects.equals(tempSrc, new String("done"))){
+            if(Objects.equals(tempSrc, new String(""))){
                 c = 0;
             }
             if(c == 1){ // only add node if tempSrc != 1
