@@ -27,6 +27,9 @@ public class implementation{
             if(c == 1){ // only add node if tempSrc != 1
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.nextLine();
+                if(Objects.equals(tempMeth, null)){
+                    tempMeth = "walking"; // default is walking
+                }
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
             }
@@ -35,7 +38,7 @@ public class implementation{
         if(DestList.size() == 10){
             System.out.println("The list can only contain 10 destinations. ");
         }
-        else if(DestList.size() != 0){
+        if(DestList.size() != 0){
             System.out.println("Your list is: ");
             for(int i = 0; i < DestList.size(); i++){
                 DestNode tempN = DestList.get(i);
