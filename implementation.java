@@ -27,7 +27,8 @@ and not add a new node */
 
             System.out.print("Enter a destination, or \"done\" if no more: ");
             String tempSrc = s.nextLine();
-            if (tempSrc == "done"){
+            System.out.println(tempSrc + "test");
+            if (Objects.equals(tempSrc, new String("done"))){
                 c = 0;
                 System.out.println(c + "test");
             }
