@@ -10,22 +10,24 @@ import java.util.*;
 
 public class implementation{
     public static void main(String args[]){
-        //Creating object of class linked list
+        // Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
-	Scanner s = new Scanner(System.in);
-	
-	System.out.print("Enter a destination: ");
-	String tempSrc = s.next();
-	System.out.print("Enter a transportation method: ");
-	String tempMeth = s.next();
+        Scanner s = new Scanner(System.in);
 
-	DestNode tempNode = new DestNode(tempSrc, tempMeth);
-        DestList.add(tempNode);
+        while (s.next() != 1){
+            System.out.print("Enter a destination, or \"1\" if no more: ");
+            String tempSrc = s.next();
+            System.out.print("Enter a transportation method: ");
+            String tempMeth = s.next();
+            DestNode tempNode = new DestNode(tempSrc, tempMeth);
+            DestList.add(tempNode);
+        }
 
-	for(int i = 0; i < DestList.size(); i++){
-	    DestNode tempN = DestList.get(i);
-	    System.out.println(tempN.getSource() + ", " + tempN.getMethod());
-	// loop for actually printing
-	}
+
+        for(int i = 0; i < DestList.size(); i++){
+            DestNode tempN = DestList.get(i);
+            System.out.println(tempN.getSource() + ", " + tempN.getMethod());
+            // loop for actually printing
+        }
     }
 }
