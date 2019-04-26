@@ -25,7 +25,7 @@ public class implementation{
             DestList.add(tempNode);
         }
         if (DestList.size() == 10){
-            System.out.print("The list can only contain 10 destinations. \n Your list is: ")
+            System.out.print("The list can only contain 10 destinations. \n Your list is: ");
         }
 
 
