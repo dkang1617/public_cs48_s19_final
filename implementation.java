@@ -15,28 +15,32 @@ public class implementation{
         // Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
         Scanner s = new Scanner(System.in);
+        boolean c = 1;
 
-        while (DestList.size() != 10){
+        while (c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
             System.out.print("Enter a destination, or \"1\" if no more: ");
             String tempSrc = s.next();
             if (tempSrc == "1"){
-                break;
+                c = 0;
             }
-            System.out.print("Enter a transportation method: ");
-            String tempMeth = s.next();
-            DestNode tempNode = new DestNode(tempSrc, tempMeth);
-            DestList.add(tempNode);
-        }
-        if (DestList.size() == 10){
-            System.out.print("The list can only contain 10 destinations.");
+            if (c){ // only add node if tempSrc != 1
+                System.out.print("Enter a transportation method: ");
+                String tempMeth = s.next();
+                DestNode tempNode = new DestNode(tempSrc, tempMeth);
+                DestList.add(tempNode);
+            }
         }
 
-        System.out.print("Your list is: ");
+        if (DestList.size() == 10){
+            System.out.println("The list can only contain 10 destinations. ");
+        }
+
+        System.out.println("Your list is: ");
 
         for(int i = 0; i < DestList.size(); i++){
             DestNode tempN = DestList.get(i);
-            System.out.println(i+1 + ". " + tempN.getSource() + ", " + tempN.getMethod());
-            // loop for actually printing
+            System.out.println(" " + i + 1 + ". " + tempN.getSource() + ", " + tempN.getMethod());
+            // loop for printing list
         }
     }
 }
