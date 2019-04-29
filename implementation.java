@@ -29,7 +29,7 @@ public class implementation{
                 String tempMeth = s.nextLine();
                 if(Objects.equals(tempMeth, new String(""))){
                     tempMeth = "walking"; // default is walking
-		    System.out.println("      -defaulted to walking- \n");
+		    System.out.println("      -defaulted to walking-");
                 }
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
