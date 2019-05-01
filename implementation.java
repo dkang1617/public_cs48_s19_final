@@ -1,7 +1,5 @@
 // written by Arthur Phan for CS48- Organized (All-Stars)
 
-// GOLD schedule api possibility
-
 // implementation notes
 // frontend- dragout for destination names
 // destination names allowed (checked on frontend)
