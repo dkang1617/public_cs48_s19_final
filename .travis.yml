@@ -1,6 +1,8 @@
-#language: java
-#java:
-#    - "java"
+language: java
+java:
+    - "java"
+script: make # && make test
+
 language: node_js
 node_js:
     - "node"
