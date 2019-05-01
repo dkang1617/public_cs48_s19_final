@@ -15,21 +15,41 @@ public class implementation{
         // Creating object of class linked list
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
         Scanner s = new Scanner(System.in);
+        int c = 1;
 
-        while (s.next() != 1){
-            System.out.print("Enter a destination, or \"1\" if no more: ");
-            String tempSrc = s.next();
-            System.out.print("Enter a transportation method: ");
-            String tempMeth = s.next();
-            DestNode tempNode = new DestNode(tempSrc, tempMeth);
-            DestList.add(tempNode);
+        while(c == 1 && DestList.size() != 10){ // list must not exceed 10, and check if they want more nodes
+
+            System.out.print("Enter a destination, or input nothing if no more destinations are wanted: ");
+            String tempSrc = s.nextLine();
+            if(Objects.equals(tempSrc, new String(""))){
+                c = 0;
+            }
+            if(c == 1){ // only add node if tempSrc != 1
+                System.out.print("Enter a transportation method: ");
+                String tempMeth = s.nextLine();
+                if(Objects.equals(tempMeth, new String(""))){
+                    tempMeth = "walking"; // default is walking
+		    System.out.println("      -defaulted to walking-");
+                }
+                DestNode tempNode = new DestNode(tempSrc, tempMeth);
+                DestList.add(tempNode);
+            }
         }
 
-
-        for(int i = 0; i < DestList.size(); i++){
-            DestNode tempN = DestList.get(i);
-            System.out.println(tempN.getSource() + ", " + tempN.getMethod());
-            // loop for actually printing
+        if(DestList.size() == 10){
+            System.out.println("The list can only contain 10 destinations. ");
         }
+        if(DestList.size() != 0){
+            System.out.println("Your list is: ");
+            for(int i = 0; i < DestList.size(); i++){
+                DestNode tempN = DestList.get(i);
+                System.out.println(" " + (i + 1) + ". " + tempN.getSource() + ", " + tempN.getMethod());
+                // loop for printing list
+            }
+        }
+        else{
+            System.out.println("No locations were added to the list.");
+        }
+
     }
 }
