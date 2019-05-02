@@ -14,19 +14,19 @@ public class implementation{
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
         Scanner s = new Scanner(System.in);
 
-        /* Boolean int for whether to stop asking for input */
-        int notDone = 1;
+        /* boolean for whether to stop asking for input */
+        boolean Done = 0;
 
         /* List must not exceed 10, and check if user wants more nodes */
-        while(notDone == 1 && DestList.size() != 10){
+        while(Done == 0 && DestList.size() != 10){
             System.out.print("Enter a destination, or input nothing if no more destinations are wanted: ");
             String tempSrc = s.nextLine();
 
             /* checks in user inputted "" to stop adding nodes */
-            notDone = !(Objects.equals(tempSrc, new String("")));
+            Done = (Objects.equals(tempSrc, new String("")));
 
             /* only add node if tempSrc != "" */
-            if(notDone == 1){
+            if(Done == 0){
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.nextLine();
 
