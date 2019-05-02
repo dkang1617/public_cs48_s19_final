@@ -15,10 +15,10 @@ public class implementation{
         Scanner s = new Scanner(System.in);
 
         /* boolean for whether to stop asking for input */
-        boolean Done = 0;
+        boolean Done = false;
 
         /* List must not exceed 10, and check if user wants more nodes */
-        while(Done == 0 && DestList.size() != 10){
+        while(Done == false && DestList.size() != 10){
             System.out.print("Enter a destination, or input nothing if no more destinations are wanted: ");
             String tempSrc = s.nextLine();
 
@@ -26,7 +26,7 @@ public class implementation{
             Done = (Objects.equals(tempSrc, new String("")));
 
             /* only add node if tempSrc != "" */
-            if(Done == 0){
+            if(Done == false){
                 System.out.print("Enter a transportation method: ");
                 String tempMeth = s.nextLine();
 
