@@ -13,14 +13,14 @@ public class DestNode{
     public String getSource(){
         return Source;
     }
-    /* getMethod() return Method */
+    /* getMethod() returns Method */
     public String getMethod(){
         return Method;
     }
     /* attributes for DestNode are Source and Method
     Source; where the user inputs they are at instance x
     Method; how the user wants to get to instance x + 1 */
-    
+
     private String Source;
     private String Method;
 }
