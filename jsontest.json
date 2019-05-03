@@ -1,0 +1,36 @@
+{
+	"Courses": [
+
+		{
+			"id":"CMPSC48",
+			"fullname":"Computer Science Project",
+			"idcode":"07781",
+			"meetingtimeone":"M",
+			"meetingtimetwo":"W"
+		},
+
+		{
+			"id":"CMPSC56",
+			"fullname":"Advanced Applications Programming",
+			"idcode":"49452",
+			"meetingtimeone":"M",
+			"meetingtimetwo":"W"
+		},
+
+		{
+			"id":"EARTH20",
+			"fullname":"Geological Catastrophes",
+			"idcode":"11130",
+			"meetingtimeone":"T",
+			"meetingtimetwo":"R"
+		},
+
+		{
+			"id":"PSTAT10",
+			"fullname":"Data Science Principles",
+			"idcode":"41491",
+			"meetingtimeone":"M",
+			"meetingtimetwo":"W"
+		}
+	]
+}
