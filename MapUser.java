@@ -17,9 +17,17 @@ public class MapUser{
         return Password;
     }
     /* verifyLogin() returns boolean value if */
-    public Boolean verifyLogin(String name, String pass){
+    public boolean verifyLogin(String name, String pass){
         if (name == getUsername() && pass == getPassword()) return true;
         else return false;
+    }
+
+    public Void addList(String listName){
+        return -1;
+    }
+
+    public Void addNode(LinkedList listName, String dest, String meth){
+        return -1;
     }
     /* attributes for MapUser are Username, Password, and logStatus
     Username;
