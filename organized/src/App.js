@@ -31,7 +31,6 @@ class App extends Component {
         });
 
     };
-    
     onFailure = (error) => {
       alert("Login failed");
     }
