@@ -5,11 +5,4 @@ script: make # && make test
 
 language: node_js
 node_js:
-  - "stable"
-cache:
-  directories:
-    - organized/node_modules
-script:
-  - cd organized
-  - npm test
-  - npm run build
+    - "node"
