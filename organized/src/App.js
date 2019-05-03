@@ -88,6 +88,7 @@ class App extends Component {
             }
         })
         console.log(eventName+' '+startDate+' '+endDate)
+        console.log(makeQuerystring({eventName}))
 
     }
 
@@ -102,18 +103,6 @@ class App extends Component {
         console.log(data)
 
     }
-
-    // goldTest = async(e)=>{
-    //     const apiCall=await fetch("ttps://api.ucsb.edu/dining/menu/v1/2019-04-19",{
-    //         method: "get",
-    //         headers:{
-    //             accept:application/json
-    //         }
-    //     });
-    //     const data = apiCall.json();
-    //     console.log(data);
-    // }
-
 
     render() {
         let content = !!this.state.isAuthenticated ?
