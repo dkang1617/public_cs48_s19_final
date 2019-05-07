@@ -1,0 +1,23 @@
+// listContents.txt
+arthuraccount||list1
+Phelps Hall, walking
+Girvetz, biking
+Ortega Dining Commons, walking
+end, end
+arthuraccount||list2
+Phelps Hall, walking
+Girvetz, biking
+end, end
+arthuraccount||monday
+Phelps Hall, walking
+Ortega Dining Commons, walking
+Davidson Library, walking
+end, end
+arthuraccount||sunday
+Girvetz, biking
+Ortega Dining Commons, walking
+end, end
+danielaccount||list1
+Anacapa Hall, walking
+De La Guerra Dining Commons, walking
+end, end

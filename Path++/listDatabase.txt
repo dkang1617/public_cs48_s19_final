@@ -1,0 +1,3 @@
+// listDatabase.txt
+arthuraccount||list1+list2+monday+sunday
+danielaccount||list1
