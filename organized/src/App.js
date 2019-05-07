@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json'
+import jsontest from './jsontest'
 
 
 class App extends Component {
@@ -11,9 +12,6 @@ class App extends Component {
         token: '',
         email: '',
         timezone:'',
-        eventName:'',
-        startDate:'',
-        endTime:''
     };
 
     logout = () => {
@@ -64,31 +62,32 @@ class App extends Component {
 
     makeEvent = async (e) =>{
         e.preventDefault();
-        const eventName = e.target.elements.eventName.value;
-        const startDate = e.target.elements.startDate.value;
-        const endDate = e.target.elements.endDate.value;
-        //Refer to how-to-use-the-google-calendar-api resource from slack
-        //Not quite sure how this works, guessing we need to encode or string before we can send it to make an event
-        var makeQuerystring = params =>
-            Object.keys(params)
-                .map(key => {
-                   return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
-                })
-                .join("&");
+        //See https://developers.google.com/calendar/create-events for more info
+        //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
+        const event={
+            'summary' : jsontest.Courses[0].id,
+            'start' : {
+                //Gonna need to make something to parse the json file, current format needs tweeking before being made into events, hardcode for now
+                'dateTime' : '2019-05-13T14:00:00',
+                'timeZone' : 'America/Los_Angeles',
+            },
+            'end' : {
+                'dateTime' : '2019-05-13T15:15:00',
+                'timeZone' : 'America/Los_Angeles',
+            },
+        };
+        console.log(jsontest.Courses.length);
+        console.log(event)
 
-        //Maybe don't use quickAdd since it chooses the date in a "smart" way, prob want something I just punch in
-        const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events/quickAdd",{
+        const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
             method:"post",
-            body: makeQuerystring({
-                text: eventName+" "+startDate+" "+endDate
-            }),
+            body : JSON.stringify(event),
             headers:{
-                "Content-Type": "application/x-www-form-urlencoded",
+                'Content-Type': 'application/json ; charset=UTF-8',
                 Authorization: "Bearer "+this.state.token,
             }
         })
-        console.log(eventName+' '+startDate+' '+endDate)
-        console.log(makeQuerystring({eventName}))
+
 
     }
 
@@ -129,12 +128,9 @@ class App extends Component {
                         </button>
                     </div>
                     <div>
-                        <form onSubmit={this.makeEvent}>
-                            <input type ="text" name="eventName" placeholder="Name of event"/>
-                            <input type ="text" name="startDate" placeholder="Start of event, MM/DD/YY 24:00"/>
-                            <input type ="text" name="endDate" placeholder="End of event, MM/DD/YY 24:00"/>
-                            <button>Submit</button>
-                        </form>
+                        <button onClick={this.makeEvent}>
+                            Make Events
+                        </button>
                     </div>
                     <div>
                         <button onClick={this.getEvents}>
