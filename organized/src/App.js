@@ -108,13 +108,14 @@ class App extends Component {
         let content = !!this.state.isAuthenticated ?
             (
                 <div>
-                    <p>Welcome {this.state.user.givenName}  </p>
+                    <p> Welcome {this.state.user.givenName}  </p>
                     <div>
                         <button onClick={this.logout} className="button">
                             Log out
                         </button>
                     </div>
                     <p>Your token is:{this.state.token}</p>
+                    
                     <div>
                         <button onClick={this.requestCalendar} className="calendarButton">
                             Request calendar timezone!
@@ -128,6 +129,7 @@ class App extends Component {
                             Get Calendar IDs!
                         </button>
                     </div>
+                    
                     <div>
                         <form onSubmit={this.makeEvent}>
                             <input type ="text" name="eventName" placeholder="Name of event"/>
@@ -146,7 +148,7 @@ class App extends Component {
             ) :
             (
                 <div>
-                    <h1>Organized</h1>
+                
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
