@@ -9,6 +9,7 @@ class App extends Component {
         isAuthenticated: false,
         user: null,
         token: '',
+        email: '',
         timezone:'',
         eventName:'',
         startDate:'',
@@ -16,7 +17,7 @@ class App extends Component {
     };
 
     logout = () => {
-        this.setState({isAuthenticated: false, token: '', user: null})
+        this.setState({isAuthenticated: false, token: '', user: null,email:'',timezone:'',eventName:'',startDate:'',endTime:''})
     };
     
     googleResponse = (e) => {
@@ -25,7 +26,9 @@ class App extends Component {
         this.setState({
             isAuthenticated:true,
             user:response.profileObj,
-            token:response.tokenObj.access_token})
+            token:response.tokenObj.access_token,
+            email:response.profileObj.email
+        });
 
     };
     onFailure = (error) => {
@@ -64,22 +67,42 @@ class App extends Component {
         const eventName = e.target.elements.eventName.value;
         const startDate = e.target.elements.startDate.value;
         const endDate = e.target.elements.endDate.value;
+        //Refer to how-to-use-the-google-calendar-api resource from slack
+        //Not quite sure how this works, guessing we need to encode or string before we can send it to make an event
+        var makeQuerystring = params =>
+            Object.keys(params)
+                .map(key => {
+                   return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
+                })
+                .join("&");
 
+        //Maybe don't use quickAdd since it chooses the date in a "smart" way, prob want something I just punch in
+        const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events/quickAdd",{
+            method:"post",
+            body: makeQuerystring({
+                text: eventName+" "+startDate+" "+endDate
+            }),
+            headers:{
+                "Content-Type": "application/x-www-form-urlencoded",
+                Authorization: "Bearer "+this.state.token,
+            }
+        })
         console.log(eventName+' '+startDate+' '+endDate)
+        console.log(makeQuerystring({eventName}))
 
     }
 
-    // goldTest = async(e)=>{
-    //     const apiCall=await fetch("ttps://api.ucsb.edu/dining/menu/v1/2019-04-19",{
-    //         method: "get",
-    //         headers:{
-    //             accept:application/json
-    //         }
-    //     });
-    //     const data = apiCall.json();
-    //     console.log(data);
-    // }
+    getEvents = async (e) => {
+        const apiCall = await fetch("https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
+            method: "get",
+            headers:{
+                Authorization: "Bearer "+this.state.token
+            }
+        })
+        const data = await apiCall.json();
+        console.log(data)
 
+    }
 
     render() {
         let content = !!this.state.isAuthenticated ?
@@ -112,6 +135,11 @@ class App extends Component {
                             <input type ="text" name="endDate" placeholder="End of event, MM/DD/YY 24:00"/>
                             <button>Submit</button>
                         </form>
+                    </div>
+                    <div>
+                        <button onClick={this.getEvents}>
+                            Get your events!
+                        </button>
                     </div>
 
                 </div>
