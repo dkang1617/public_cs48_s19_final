@@ -156,7 +156,7 @@ class App extends Component {
                 <div>
                 
                     <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
+                        clientId={"uncomment me! config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}
