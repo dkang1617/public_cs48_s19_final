@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import config from './config.json'
+//import config from './config.json'
 import jsontest from './jsontest'
 import JsonParser from './JsonParser'
 
