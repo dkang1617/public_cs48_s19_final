@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import config from './config.json'
 import jsontest from './jsontest'
+import JsonParser from './JsonParser'
 
 
 class App extends Component {
@@ -76,9 +77,18 @@ class App extends Component {
                 'timeZone' : 'America/Los_Angeles',
             },
         };
-        console.log(jsontest.Courses.length);
-        console.log(event)
+        //console.log(jsontest.Courses.length);
+        //console.log(event)
+        const jsonParser = new JsonParser(jsontest);
 
+        console.log(jsonParser);
+        const courseCount = jsontest.Courses.length;
+        console.log(courseCount);
+        for(var i = 0 ; i < courseCount; i++){
+            console.log(jsonParser.getID(i));
+        }
+
+        //Commented out to not spam my calendar
         const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
             method:"post",
             body : JSON.stringify(event),
