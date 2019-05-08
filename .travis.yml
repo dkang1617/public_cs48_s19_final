@@ -9,6 +9,8 @@ node_js:
 cache:
   directories:
     - organized/node_modules
-before_script: cd organized
+before_script:
+  - cd organized
+  - npm install
 script:
   - npm test
