@@ -6,11 +6,11 @@
 			"fullname":"Computer Science Project",
 			"idcode":"07781",
 			"meetingdayone":"M",
-			"meetingtimeone":"2:00",
-			"meetimeendone":"3:15",
+			"meetingtimeone":"2015-05-06T14:00:00",
+			"meetimeendone":"2015-05-06T15:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"2:00",
-			"meetingendtwo":"3:15"
+			"meetingtimetwo":"2015-05-08T14:00:00",
+			"meetingendtwo":"2015-05-08T15:15:00"
 		},
 
 		{
@@ -18,11 +18,11 @@
 			"fullname":"Advanced Applications Programming",
 			"idcode":"49452",
 			"meetingdayone":"M",
-			"meetingtimeone":"5:00",
-			"meetingendone":"6:15",
+			"meetingtimeone":"2015-05-06T17:00:00",
+			"meetingendone":"2015-05-06T18:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"5:00",
-			"meetingendtwo":"6:15"
+			"meetingtimetwo":"2015-05-08T17:00:00",
+			"meetingendtwo":"2015-05-08T18:15:00"
 		},
 
 		{
@@ -30,11 +30,11 @@
 			"fullname":"Geological Catastrophes",
 			"idcode":"11130",
 			"meetingdayone":"T",
-			"meetingtimeone":"9:30",
-			"meetingendone":"10:45",
+			"meetingtimeone":"2015-05-07T09:30:00",
+			"meetingendone":"2015-05-07T10:45:00",
 			"meetingdaytwo":"R",
-			"meetingtimetwo":"9:30",
-			"meetingendtwo":"10:45"
+			"meetingtimetwo":"2015-05-09T9:30:00",
+			"meetingendtwo":"2015-05-09T10:45:00"
 		},
 
 		{
@@ -42,11 +42,11 @@
 			"fullname":"Data Science Principles",
 			"idcode":"41491",
 			"meetingdayone":"M",
-			"meetingtimeone":"11:00",
-			"meetingendone":"12:15",
+			"meetingtimeone":"2015-05-06T11:00:00",
+			"meetingendone":"2015-05-06T12:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"11:00",
-			"meetingendtwo":"12:15"
+			"meetingtimetwo":"2015-05-08T11:00:00",
+			"meetingendtwo":"2015-05-08T12:15:00"
 		}
 	]
 }
