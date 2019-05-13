@@ -5,7 +5,7 @@ import config from './config.json'
 
 class App extends Component {
 
-    state = { 
+    state = {
         isAuthenticated: false,
         user: null,
         token: '',
@@ -19,7 +19,7 @@ class App extends Component {
     logout = () => {
         this.setState({isAuthenticated: false, token: '', user: null,email:'',timezone:'',eventName:'',startDate:'',endTime:''})
     };
-    
+
     googleResponse = (e) => {
         const response = e;
         console.log(response);
@@ -62,7 +62,7 @@ class App extends Component {
         console.log(data);
     }
 
-    makeEvent = async (e) =>{
+    makeEvent = async (e) =>{ // input value bar
         e.preventDefault();
         const eventName = e.target.elements.eventName.value;
         const startDate = e.target.elements.startDate.value;
@@ -115,7 +115,7 @@ class App extends Component {
                         </button>
                     </div>
                     <p>Your token is:{this.state.token}</p>
-                    
+
                     <div>
                         <button onClick={this.requestCalendar} className="calendarButton">
                             Request calendar timezone!
@@ -129,9 +129,9 @@ class App extends Component {
                             Get Calendar IDs!
                         </button>
                     </div>
-                    
+
                     <div>
-                        <form onSubmit={this.makeEvent}>
+                        <form onSubmit={this.makeEvent}> // assign values here 
                             <input type ="text" name="eventName" placeholder="Name of event"/>
                             <input type ="text" name="startDate" placeholder="Start of event, MM/DD/YY 24:00"/>
                             <input type ="text" name="endDate" placeholder="End of event, MM/DD/YY 24:00"/>
@@ -148,7 +148,7 @@ class App extends Component {
             ) :
             (
                 <div>
-                
+
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
