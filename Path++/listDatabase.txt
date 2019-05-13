@@ -1,3 +1,6 @@
 // listDatabase.txt
+// depreciated, no longer in use
+// reason: no need for accounts if data is stored client side
+
 arthuraccount||list1+list2+monday+sunday
 danielaccount||list1

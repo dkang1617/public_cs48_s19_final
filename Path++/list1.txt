@@ -1,0 +1,5 @@
+// list1.txt
+Phelps Hall, walking
+Girvetz, biking
+Ortega Dining Commons, walking
+end

@@ -1,6 +1,9 @@
 /* written by Arthur Phan for CS48- Organized (All-Stars)
 class MapUser is a user class, which can hold linkedlists composed of DestNode nodes */
 
+// depreciated, no longer in use
+// reason: no need for accounts if data is stored client side
+
 public class MapUser{
 
     /* MapUser constructor */
