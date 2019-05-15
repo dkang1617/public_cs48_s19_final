@@ -94,7 +94,7 @@ public class implementation{
                 listToCheck.remove(i);
             }
         }
-        return listcheck;
+        return listToCheck;
     }
 
 
@@ -115,7 +115,7 @@ public class implementation{
     /* main to be executed by command line */
     public static void main(String args[]){
         /* function to make new linkedlist is called */
-        userList = makeNewList();
+        LinkedList<DestNode> userList = makeNewList();
 
         /* validate the list before printing */
         userList = validateList(userList, valFlag);
@@ -123,6 +123,5 @@ public class implementation{
         /* print the list */
         printList(userList, valFlag);
 
-        return 0;
     }
 }
