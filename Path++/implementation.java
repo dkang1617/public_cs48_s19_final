@@ -1,8 +1,10 @@
 // written by Arthur Phan for CS48- Organized (All-Stars)
 
-// implementation notes
-// frontend- dragout for destination names
-// destination names allowed (checked on frontend)
+/* implementation notes
+    1. bikeHelp.txt (coordinates for bike parking)
+    2. take from user imported list
+    3. download txt file of user (export list)
+
 
 // import destination.DestNode;
 import java.util.*;
@@ -48,8 +50,11 @@ public class implementation{
             /* message for the rest of the destinations of the list */
             if(doneFlag == false && DestList.size() != 0){
                 int currentLen = DestList.size();
-                System.out.print("Enter the next destination. It will be Destination #" + currentLen + ":\n");
+                System.out.print("Enter the next destination. It will be Destination #" + currentLen + ":\n If you want to stop, enter nothing:");
                 tempSrc = sysIn.nextLine();
+                if(Objects.equals(tempSrc, new String(""))){
+                    doneFlag = true;
+                }
             }
 
             /* only add node if tempSrc != "" */
@@ -89,7 +94,7 @@ public class implementation{
         /* iterate through the list and remove any elements with invalid methods of transporation */
         for(int i = 0; i < listToCheck.size(); i++){
             DestNode tempNode = listToCheck.get(i);
-            if((tempNode.getMethod()).toLowerCase() != "biking" || (tempNode.getMethod()).toLowerCase() != "walking"){
+            if(Objects.equals((tempNode.getMethod()).toLowerCase(), new String("biking")) == false || Object.equals((tempNode.getMethod()).toLowerCase()) == false){
                 validFlag = false;
                 listToCheck.remove(i);
             }
