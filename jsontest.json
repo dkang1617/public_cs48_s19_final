@@ -6,11 +6,12 @@
 			"fullname":"Computer Science Project",
 			"idcode":"07781",
 			"meetingdayone":"M",
-			"meetingtimeone":"2015-05-06T14:00:00",
-			"meetimeendone":"2015-05-06T15:15:00",
+			"meetingtimeone":"2019-05-06T14:00:00",
+			"meetingendone":"2019-05-06T15:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"2015-05-08T14:00:00",
-			"meetingendtwo":"2015-05-08T15:15:00"
+			"meetingtimetwo":"2019-05-08T14:00:00",
+			"meetingendtwo":"2019-05-08T15:15:00",
+			"building":"Phelps Hall"
 		},
 
 		{
@@ -18,11 +19,12 @@
 			"fullname":"Advanced Applications Programming",
 			"idcode":"49452",
 			"meetingdayone":"M",
-			"meetingtimeone":"2015-05-06T17:00:00",
-			"meetingendone":"2015-05-06T18:15:00",
+			"meetingtimeone":"2019-05-06T17:00:00",
+			"meetingendone":"2019-05-06T18:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"2015-05-08T17:00:00",
-			"meetingendtwo":"2015-05-08T18:15:00"
+			"meetingtimetwo":"2019-05-08T17:00:00",
+			"meetingendtwo":"2019-05-08T18:15:00",
+			"building":"Phelps Hall"
 		},
 
 		{
@@ -30,11 +32,12 @@
 			"fullname":"Geological Catastrophes",
 			"idcode":"11130",
 			"meetingdayone":"T",
-			"meetingtimeone":"2015-05-07T09:30:00",
-			"meetingendone":"2015-05-07T10:45:00",
+			"meetingtimeone":"2019-05-07T09:30:00",
+			"meetingendone":"2019-05-07T10:45:00",
 			"meetingdaytwo":"R",
-			"meetingtimetwo":"2015-05-09T9:30:00",
-			"meetingendtwo":"2015-05-09T10:45:00"
+			"meetingtimetwo":"2019-05-09T9:30:00",
+			"meetingendtwo":"2019-05-09T10:45:00",
+			"building":"Department of Chemistry and Biochemistry"
 		},
 
 		{
@@ -42,11 +45,12 @@
 			"fullname":"Data Science Principles",
 			"idcode":"41491",
 			"meetingdayone":"M",
-			"meetingtimeone":"2015-05-06T11:00:00",
-			"meetingendone":"2015-05-06T12:15:00",
+			"meetingtimeone":"2019-05-06T11:00:00",
+			"meetingendone":"2019-05-06T12:15:00",
 			"meetingdaytwo":"W",
-			"meetingtimetwo":"2015-05-08T11:00:00",
-			"meetingendtwo":"2015-05-08T12:15:00"
+			"meetingtimetwo":"2019-05-08T11:00:00",
+			"meetingendtwo":"2019-05-08T12:15:00",
+			"building":"Buchanan Hall"
 		}
 	]
 }
