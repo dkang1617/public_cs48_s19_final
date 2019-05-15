@@ -9,74 +9,120 @@ import java.util.*;
 import java.io.*;
 
 public class implementation{
-    /* function for removing all invalid nodes */
+    /* boolean for whether to stop asking for input; true is done, false if not done */
+    /* boolean for checking list validity; true if valid, false if invalid */
     boolean doneFlag;
-    boolean valFlag;
-    public LinkedList<Destnode> validateList(LinkedList<DestNode> listcheck, boolean validFlag){
-        for(int i = 0; i < listcheck.size(); i++){
-            Destnode tempNode = listcheck.get(i);
-            if(tempNode.getMethod() != "biking" || tempNode.getMethod() != "walking"){
-                validFlag = false;
-                listcheck.remove(i);
-            }
-        }
-        return listcheck;
-    }
+    boolean valFlag = true;
 
-    private LinkedList<Destnode> bikeParking(LinkedList<DestNode> listcheck){
-
-    }
-
-
-    public static void main(String args[]){
-        /* boolean for whether to stop asking for input; true is done, false if not done */
-        /* boolean for checking list validity; true if valid, false if invalid */
+    /* this function is automatically called at the beginning of main call- returns a LinkedList */
+    public LinkedList<DestNode> makeNewList(){
         doneFlag = false;
-        valFlag = true;
         /* Creating object of class linked list */
         LinkedList<DestNode> DestList = new LinkedList<DestNode>();
-        /* scanner object for reading user input */
-        Scanner s = new Scanner(System.in);
+        /* scanner object sysIn is for reading user input */
+        Scanner sysIn = new Scanner(System.in);
+        /*initialize strings for making nodes */
+        String tempSrc = "";
+        String tempMeth = "";
 
-        /* List must not exceed 10, and check if user wants more nodes */
+        /* check for two conditions before actually adding to list - check if it is a new list, or if the list is full */
         while(doneFlag == false){
+            /* message for first destination of list */
+            if(DestList.size() == 0){
+                System.out.print("Enter the first destination to start your list: ");
+                tempSrc = sysIn.nextLine();
+
+                /* if nothing is entered for the first destination, print error */
+                if(Objects.equals(tempSrc, new String(""))){
+                    System.out.println(" Please restart the program if you wish to create a list. ");
+                    doneFlag = true;
+                }
+            }
+
+            /* warning message for list length 10 */
+            if(DestList.size() == 10){
+                System.out.println("The list can only contain 10 destinations.");
+                doneFlag = true;
+            }
+
+            /* message for the rest of the destinations of the list */
+            if(doneFlag == false && DestList.size() != 0){
+                int currentLen = DestList.size();
+                System.out.print("Enter the next destination. It will be Destination #" + currentLen + ":\n");
+                tempSrc = sysIn.nextLine();
+            }
+
             /* only add node if tempSrc != "" */
             if(doneFlag == false){
-                System.out.print("Enter a transportation method: ");
-                String tempMeth = s.nextLine();
+                System.out.print("Enter whether you are 'biking' or 'walking' to the next destination.\n  The default is walking: ");
+                tempMeth = sysIn.nextLine();
 
                 /* default method is walking */
                 if(Objects.equals(tempMeth, new String(""))){
                     tempMeth = "walking";
-                    System.out.println("      -defaulted to walking-");
+                    System.out.println(" --defaulted to walking-- ");
                 }
+
                 /* create and add node */
                 DestNode tempNode = new DestNode(tempSrc, tempMeth);
                 DestList.add(tempNode);
             }
         }
 
-        /* warning message for list length 10 */
-        if(DestList.size() == 10) System.out.println("The list can only contain 10 destinations. ");
+        return DestList;
+    }
 
-        /* validate the list before printing */
-        /* only print for nonempty list */
-        DestList = validateList(DestList, valFlag);
 
-        if(DestList.size() != 0){
-            if(valFlag == false){
+    /* NOT IMPLEMENTED YET: if the user is biking places, they should be directed to the coordinates of bike parking */
+    // private LinkedList<DestNode> bikeParking(LinkedList<DestNode> listcheck){
+    //
+    // }
+
+
+    /* function for removing all invalid nodes - args are a DestNode linked list and the valFlag */
+    public LinkedList<DestNode> validateList(LinkedList<DestNode> listToCheck, boolean validFlag){
+        /* autoreturn an empty list */
+        if(listToCheck.size() == 0){
+            return listToCheck;
+        }
+
+        /* iterate through the list and remove any elements with invalid methods of transporation */
+        for(int i = 0; i < listToCheck.size(); i++){
+            DestNode tempNode = listToCheck.get(i);
+            if((tempNode.getMethod()).toLowerCase() != "biking" || (tempNode.getMethod()).toLowerCase() != "walking"){
+                validFlag = false;
+                listToCheck.remove(i);
+            }
+        }
+        return listcheck;
+    }
+
+
+    /* function for print statement */
+    public void printList(LinkedList<DestNode> listToPrint, boolean validFlag){
+        if(listToPrint.size() != 0){
+            if(validFlag == false){
                 System.out.println("One or more destinations had invalid methods of transporation. ");
             }
             System.out.println("Your list is: ");
-            for(int i = 0; i < DestList.size(); i++){
-                DestNode tempN = DestList.get(i);
-                System.out.println(" " + (i + 1) + ". " + tempN.getSource() + ", " + tempN.getMethod());
+            for(int i = 0; i < listToPrint.size(); i++){
+                DestNode tempNode = listToPrint.get(i);
+                System.out.println(" " + (i + 1) + ". " + tempNode.getSource() + ", " + tempNode.getMethod());
             }
         }
-        /* message if no items were added */
-        else{
-            System.out.println("No locations were added to the list.");
-        }
+    }
 
+    /* main to be executed by command line */
+    public static void main(String args[]){
+        /* function to make new linkedlist is called */
+        userList = makeNewList();
+
+        /* validate the list before printing */
+        userList = validateList(userList, valFlag);
+
+        /* print the list */
+        printList(userList, valFlag);
+
+        return 0;
     }
 }
