@@ -9,6 +9,14 @@ import java.util.*;
 import java.io.*;
 
 public class serverSide{
+    /* run with
+        java serverSide 0
+    to printList to console */
+
+    /* run with
+        java serverSide 1
+    to printList and return as string */
+
     public static void main(String args[]){
         /* boolean for whether to stop asking for input; true is done, false if not done */
         /* boolean for checking list validity; true if valid, false if invalid */
@@ -26,7 +34,7 @@ public class serverSide{
         /* print the list; if args[1] = 1, return as string */
         if(Objects.equals(args[0], "1")){
             String finalStr = commLine.returnAsString(userList);
-            System.out.println("finalStr: " + finalStr);
+            System.out.println(finalStr);
         }
         else{
             commLine.printList(userList, valFlag);
