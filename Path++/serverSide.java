@@ -23,8 +23,8 @@ public class serverSide{
         /* validate the list before printing */
         userList = commLine.validateList(userList, valFlag);
 
-        /* print the list; if arg[1] = 1, return as string */
-        if(arg[1] == ){
+        /* print the list; if args[1] = 1, return as string */
+        if(Objects.equals(args[1], "1")){
             String finalStr = commLine.returnAsString(userList);
             System.out.println(finalStr);
         }

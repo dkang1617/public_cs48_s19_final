@@ -131,7 +131,7 @@ public class implementation{
         for(int i = 0; i < listToPrint.size(); i++){
             DestNode tempNode = listToPrint.get(i);
             String tempStr = (" " + (i + 1) + ". " + tempNode.getSource() + ", " + tempNode.getMethod()) + "\n";
-            finalValue = finalString.concat(tempStr);
+            finalString = finalString.concat(tempStr);
         }
         return finalString;
 
