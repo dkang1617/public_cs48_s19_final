@@ -26,7 +26,7 @@ public class serverSide{
         /* print the list; if args[1] = 1, return as string */
         if(Objects.equals(args[0], "1")){
             String finalStr = commLine.returnAsString(userList);
-            System.out.println(finalStr);
+            System.out.println("finalStr: " + finalStr);
         }
         else{
             commLine.printList(userList, valFlag);
