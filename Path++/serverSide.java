@@ -8,8 +8,13 @@
 import java.util.*;
 import java.io.*;
 
-public class impleTest{
+public class serverSide{
     public static void main(String args[]){
+        /* boolean for whether to stop asking for input; true is done, false if not done */
+        /* boolean for checking list validity; true if valid, false if invalid */
+        boolean doneFlag;
+        boolean valFlag = true;
+
         /* function to make new linkedlist is called */
 
         implementation commLine = new implementation();

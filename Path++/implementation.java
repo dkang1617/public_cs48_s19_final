@@ -9,11 +9,6 @@ import java.util.*;
 import java.io.*;
 
 public class implementation{
-    /* boolean for whether to stop asking for input; true is done, false if not done */
-    /* boolean for checking list validity; true if valid, false if invalid */
-    boolean doneFlag;
-    boolean valFlag = true;
-
     /* this function is automatically called at the beginning of main call- returns a LinkedList */
     public LinkedList<DestNode> makeNewList(){
         doneFlag = false;

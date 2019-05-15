@@ -15,6 +15,7 @@ JC = javac
 CLASSES = \
 	DestNode.java \
 	implementation.java \
+	serverSide.java
 
 #TEST = \
 	DestNode.java \
