@@ -52,6 +52,7 @@ public class implementation{
                 int currentLen = DestList.size();
                 System.out.print("Enter the next destination. It will be Destination #" + currentLen + ":\n If you want to stop, enter nothing:");
                 tempSrc = sysIn.nextLine();
+                tempSrc = tempSrc.trim();
                 if(Objects.equals(tempSrc, new String(""))){
                     doneFlag = true;
                 }
@@ -61,6 +62,7 @@ public class implementation{
             if(doneFlag == false){
                 System.out.print("Enter whether you are 'biking' or 'walking' to the next destination.\n  The default is walking: ");
                 tempMeth = sysIn.nextLine();
+                tempMeth = tempMeth.trim();
 
                 /* default method is walking */
                 if(Objects.equals(tempMeth, new String(""))){
