@@ -12,7 +12,7 @@ public class impleTest{
     public static void main(String args[]){
         /* function to make new linkedlist is called */
 
-        implementation commLine = new implementation;
+        implementation commLine = new implementation();
         LinkedList<DestNode> userList = commLine.makeNewList();
 
         /* validate the list before printing */
