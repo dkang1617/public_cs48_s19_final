@@ -113,7 +113,7 @@ public class implementation{
     }
 
     /* main to be executed by command line */
-    public void main(String args[]){
+    public static void main(String args[]){
         /* function to make new linkedlist is called */
         LinkedList<DestNode> userList = this.makeNewList();
 
