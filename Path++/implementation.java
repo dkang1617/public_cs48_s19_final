@@ -113,15 +113,15 @@ public class implementation{
     }
 
     /* main to be executed by command line */
-    public static void main(String args[]){
+    public void main(String args[]){
         /* function to make new linkedlist is called */
-        LinkedList<DestNode> userList = makeNewList();
+        LinkedList<DestNode> userList = this.makeNewList();
 
         /* validate the list before printing */
-        userList = validateList(userList, valFlag);
+        userList = this.validateList(userList, valFlag);
 
         /* print the list */
-        printList(userList, valFlag);
+        this.printList(userList, valFlag);
 
     }
 }
