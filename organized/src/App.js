@@ -5,7 +5,7 @@ import config from './config.json'
 
 class App extends Component {
 
-    state = { 
+    state = {
         isAuthenticated: false,
         user: null,
         token: '',
@@ -19,7 +19,7 @@ class App extends Component {
     logout = () => {
         this.setState({isAuthenticated: false, token: '', user: null,email:'',timezone:'',eventName:'',startDate:'',endTime:''})
     };
-    
+
     googleResponse = (e) => {
         const response = e;
         console.log(response);
@@ -108,47 +108,18 @@ class App extends Component {
         let content = !!this.state.isAuthenticated ?
             (
                 <div>
-                    <p> Welcome {this.state.user.givenName}  </p>
-                    <div>
-                        <button onClick={this.logout} className="button">
+                    <h3>Welcome {this.state.user.givenName}, Give us a moment to organize your life! </h3>
+                     <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    <br></br>
+                    <br></br>
+                    <button onClick={this.logout} class="button">
                             Log out
                         </button>
-                    </div>
-                    <p>Your token is:{this.state.token}</p>
-                    
-                    <div>
-                        <button onClick={this.requestCalendar} className="calendarButton">
-                            Request calendar timezone!
-                        </button>
-                    </div>
-                    <div>
-                        {this.state.timezone && <p>Your timezone is: {this.state.timezone }</p>}
-                    </div>
-                    <div>
-                        <button onClick={this.getCalendarIDs} className="getCalendarIDsButton">
-                            Get Calendar IDs!
-                        </button>
-                    </div>
-                    
-                    <div>
-                        <form onSubmit={this.makeEvent}>
-                            <input type ="text" name="eventName" placeholder="Name of event"/>
-                            <input type ="text" name="startDate" placeholder="Start of event, MM/DD/YY 24:00"/>
-                            <input type ="text" name="endDate" placeholder="End of event, MM/DD/YY 24:00"/>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                    <div>
-                        <button onClick={this.getEvents}>
-                            Get your events!
-                        </button>
-                    </div>
-
                 </div>
             ) :
             (
                 <div>
-                
+
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
