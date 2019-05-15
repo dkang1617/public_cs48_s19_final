@@ -94,7 +94,9 @@ public class implementation{
         /* iterate through the list and remove any elements with invalid methods of transporation */
         for(int i = 0; i < listToCheck.size(); i++){
             DestNode tempNode = listToCheck.get(i);
-            if(Objects.equals((tempNode.getMethod()).toLowerCase(), new String("biking")) == false || Object.equals((tempNode.getMethod()).toLowerCase()) == false){
+            String methCheck = tempNode.getMethod();
+            methCheck = methCheck.toLowerCase();
+            if(Objects.equals(methCheck, new String("biking")) == false && Object.equals(methCheck, new String("walking")) == false){
                 validFlag = false;
                 listToCheck.remove(i);
             }
