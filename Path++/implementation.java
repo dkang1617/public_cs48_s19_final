@@ -50,7 +50,7 @@ public class implementation{
             /* message for the rest of the destinations of the list */
             if(doneFlag == false && DestList.size() != 0){
                 int currentLen = DestList.size();
-                System.out.print("Enter the next destination. It will be Destination #" + currentLen + ":\n If you want to stop, enter nothing:");
+                System.out.print("Enter the next destination. It will be Destination #" + currentLen + ".\n   If you want to stop, enter nothing:");
                 tempSrc = sysIn.nextLine();
                 tempSrc = tempSrc.trim();
                 if(Objects.equals(tempSrc, new String(""))){
@@ -60,7 +60,7 @@ public class implementation{
 
             /* only add node if tempSrc != "" */
             if(doneFlag == false){
-                System.out.print("Enter whether you are 'biking' or 'walking' to the next destination.\n  The default is walking: ");
+                System.out.print("Enter whether you are 'biking' or 'walking' to the next destination.\n   The default is walking: ");
                 tempMeth = sysIn.nextLine();
                 tempMeth = tempMeth.trim();
 
@@ -121,6 +121,22 @@ public class implementation{
         }
     }
 
+
+    /* function to return list as string */
+    public String returnAsString(LinkedList<DestNode> listToPrint){
+        String finalString = "";
+        if(listToPrint.size() == 0){
+            return finalString;
+        }
+        for(int i = 0; i < listToPrint.size(); i++){
+            DestNode tempNode = listToPrint.get(i);
+            String tempStr = (" " + (i + 1) + ". " + tempNode.getSource() + ", " + tempNode.getMethod()) + "\n";
+            finalValue = finalString.concat(tempStr);
+        }
+        return finalString;
+
+    }
+    
     public static void main(String args[]){
     }
 }
