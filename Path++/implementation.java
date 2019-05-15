@@ -96,7 +96,7 @@ public class implementation{
             DestNode tempNode = listToCheck.get(i);
             String methCheck = tempNode.getMethod();
             methCheck = methCheck.toLowerCase();
-            if(Objects.equals(methCheck, new String("biking")) == false && Object.equals(methCheck, new String("walking")) == false){
+            if(Objects.equals(methCheck, new String("biking")) == false && Objects.equals(methCheck, new String("walking")) == false){
                 validFlag = false;
                 listToCheck.remove(i);
             }
