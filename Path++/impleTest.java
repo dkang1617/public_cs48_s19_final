@@ -1,4 +1,12 @@
+// written by Arthur Phan for CS48- Organized (All-Stars)
 
+// implementation notes
+// frontend- dragout for destination names
+// destination names allowed (checked on frontend)
+
+// import destination.DestNode;
+import java.util.*;
+import java.io.*;
 
 public static void main(String args[]){
         /* function to make new linkedlist is called */
