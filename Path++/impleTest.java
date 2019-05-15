@@ -8,14 +8,17 @@
 import java.util.*;
 import java.io.*;
 
-public static void main(String args[]){
+public class impleTest{
+    public static void main(String args[]){
         /* function to make new linkedlist is called */
-        LinkedList<DestNode> userList = this.makeNewList();
+
+        implementation commLine = new implementation;
+        LinkedList<DestNode> userList = commLine.makeNewList();
 
         /* validate the list before printing */
-        userList = this.validateList(userList, valFlag);
+        userList = commLine.validateList(userList, valFlag);
 
         /* print the list */
-        this.printList(userList, valFlag);
-
+        commLine.printList(userList, valFlag);
     }
+}
