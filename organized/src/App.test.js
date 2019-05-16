@@ -8,7 +8,7 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it('Login working', () => {
+it('Login without any isssues', () => {
 	const div = document.createElement('div');
 	let testApp = ReactDOM.render(<App />, div);
 	try{
@@ -29,7 +29,7 @@ it('Login working', () => {
 	ReactDOM.unmountComponentAtNode(div);
 });
 
-it("Logout working", () =>{
+it("Logouts without any issues", () =>{
 	//Making a fake user object for the purpose of testing
 	const user={
 		givenName : "fake"

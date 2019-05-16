@@ -5,15 +5,31 @@ class JsonParser{
 		this.jsonFile=jsonFile;
 	}
 
-	getTime(index){
-		const time=this.jsonFile.Courses[index].meetingtimeone;
-		return(time);
+	getStartTime(index){
+		//Makes a substring that just contains the time, no date info
+		return(this.jsonFile[index].meetingtimeone.substring(11));
+	}
+	getEndTime(index){
+		return(this.jsonFile[index].meetingendone.substring(11));
 	}
 	getID(index){
-		const id=this.jsonFile.Courses[index].id;
-		return(id);
+		return(this.jsonFile[index].id);
 	}
-	//How do we determine what days of the calendar correspond to the days of the week? (ie How do we know that May 7, 2019 is a Tuesday?)
+	//Figure out the repeating rule
+	getRepeat(index){
+		var dict = {
+			"M" : "MO,WE",
+			"T" : "TU,TH"
+		}
+		const day = this.jsonFile[index].meetingdayone
+		return(dict[day]);
+	}
+	getDate(index){
+		return(this.jsonFile[index].meetingtimeone.substring(0,11))
+	}
+	getCourse(index){
+		return(this.jsonFile[index].id)
+	}
 }
 
 export default JsonParser;
