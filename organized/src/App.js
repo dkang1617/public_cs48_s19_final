@@ -1,23 +1,45 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-// import config from './config.json'
-import JsonParser from './JsonParser'
+// import config from './config.json';
+import JsonParser from './JsonParser';
+import Spinner from './component/Spinner';
 
 
 class App extends Component {
 
-    state = { 
-        isAuthenticated: false,
-        user: null,
-        token: '',
-        email: '',
-        timezone:'',
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAuthenticated: false,
+            user: null,
+            token: '',
+            email: '',
+            timezone:'',
+            isDone:false
+        };
+
+        this.timeout = null;
+    }
+
+    setIsDoneTimeout = () => {
+        this.timeout = setTimeout(() => {
+            this.setState({ isDone: true });
+        }, 3000)
+    }
 
     logout = () => {
-        this.setState({isAuthenticated: false, token: '', user: null,email:'',timezone:'',eventName:'',startDate:'',endTime:''})
+        this.setState({
+            isAuthenticated: false,
+            token: '', 
+            user: null,
+            email:'',
+            timezone:'',
+            eventName:'',
+            startDate:'',
+            endTime:''
+        })
     };
-    
+
     googleResponse = (e) => {
         const response = e;
         console.log(response);
@@ -27,8 +49,11 @@ class App extends Component {
             token:response.tokenObj.access_token,
             email:response.profileObj.email
         });
+        this.setIsDoneTimeout();
+        //this.makeEvent();
 
     };
+
     onFailure = (error) => {
       alert("Login failed");
     }
@@ -47,6 +72,7 @@ class App extends Component {
         const data = await apiCall.json();
         console.log(data);
         this.setState({timezone:data.timeZone})
+
     }
 
     getCalendarIDs = async (e) =>{
@@ -61,7 +87,7 @@ class App extends Component {
     }
 
     makeEvent = async (e) =>{
-        e.preventDefault();
+        // e.preventDefault();
         //See https://developers.google.com/calendar/create-events for more info
         //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
         const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
@@ -125,26 +151,28 @@ class App extends Component {
         //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
         const data = apiCall.text();
         //const data = await apiCall.json();
-        console.log(data);
+        data.then((value)=>{console.log(value)});
     }
 
     render() {
-        let content = !!this.state.isAuthenticated ?
+        const { 
+            user,
+            isDone,
+            isAuthenticated
+        } = this.state;
+
+        let content = isAuthenticated ?
             (
                 <div>
-
-                    <p> Welcome {this.state.user.givenName}  </p>
                     <div>
-                        <button onClick={this.logout} className="button">
+                        <Spinner 
+                            givenName={user.givenName} 
+                            isDone={isDone}
+                        />
+                    </div>
+                    <button onClick={this.logout} class="button">
                             Log out
-                        </button>
-                    </div>
-                                        
-                    <div>
-                        <button onClick={this.makeEvent}>
-                            Make Events
-                        </button>
-                    </div>
+                    </button>
                     <div>
                         <button onClick={this.getEvents}>
                             Get Events
@@ -155,14 +183,13 @@ class App extends Component {
                             Java Test
                         </button>
                     </div>
-
                 </div>
             ) :
             (
                 <div>
-                
+
                     <GoogleLogin
-                        clientId={"uncomment me!config.GOOGLE_CLIENT_ID"}
+                        clientId={"config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}
