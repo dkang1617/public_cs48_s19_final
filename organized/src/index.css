@@ -67,6 +67,18 @@ h6 {
 	letter-spacing: 0.1em;
 }
 
+.demo .button{
+	text-align: center;
+	position: absolute;
+	top: 20%;
+	right: 0;
+	left: 0;
+	font-size: 1.5em;
+	color: white;
+
+
+}
+
 .main-title .thin {
 	font-weight: 600;
 }
