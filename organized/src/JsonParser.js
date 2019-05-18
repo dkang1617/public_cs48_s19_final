@@ -30,9 +30,6 @@ class JsonParser{
 	getCourse(index){
 		return(this.jsonFile[index].id)
 	}
-	getBuilding(index){
-		return(this.jsonFile[index].id)
-	}
 }
 
 
