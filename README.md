@@ -2,8 +2,8 @@
 final project for cs48
 
 Members:
-juangonzalez20 = Juan
-dkang1617 = Daniel
-irismoini = Iris
-Krishna-Nanda = Krishna
+juangonzalez20 = Juan,
+dkang1617 = Daniel,
+irismoini = Iris,
+Krishna-Nanda = Krishna, 
 nahpruhtraton = Arthur
