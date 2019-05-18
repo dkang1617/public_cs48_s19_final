@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
+<<<<<<< HEAD
 import config from './config.json';
+=======
+// import config from './config.json';
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 
@@ -24,13 +28,21 @@ class App extends Component {
     setIsDoneTimeout = () => {
         this.timeout = setTimeout(() => {
             this.setState({ isDone: true });
+<<<<<<< HEAD
         }, 5000)
+=======
+        }, 3000)
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
     }
 
     logout = () => {
         this.setState({
             isAuthenticated: false,
+<<<<<<< HEAD
             token: '',
+=======
+            token: '', 
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
             user: null,
             email:'',
             timezone:'',
@@ -50,7 +62,11 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
+<<<<<<< HEAD
         this.makeEvent();
+=======
+        //this.makeEvent();
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
 
     };
 
@@ -90,25 +106,39 @@ class App extends Component {
         // e.preventDefault();
         //See https://developers.google.com/calendar/create-events for more info
         //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
+<<<<<<< HEAD
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
         //     method:'get',
         //     mode:'cors'
         // })
         const apiCall = await fetch("http://localhost:9000/json",{
+=======
+        const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
             method:'get',
             mode:'cors'
         })
         const data = await apiCall.json();
+<<<<<<< HEAD
         console.log(data);
         console.log(data.Courses);
         const jsonParser = new JsonParser(data.Courses);
         const courseCount = data.Courses.length;
         console.log(courseCount);
+=======
+        
+        const jsonParser = new JsonParser(data);
+        const courseCount = data.length;
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
         for(var i = 0 ; i < courseCount; i++){
             console.log(jsonParser.getID(i)+' Meets at:'+jsonParser.getStartTime(i)+' Ends at:'+jsonParser.getEndTime(i));
             console.log(jsonParser.getDate(i))
             console.log(jsonParser.getRepeat(i))
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
             const event={
                 'summary' : '{Organized} '+jsonParser.getCourse(i),
                 'start' : {
@@ -122,7 +152,11 @@ class App extends Component {
                 },
                 'recurrence' : ['RRULE:FREQ=WEEKLY;UNTIL=20190614T000000Z;WKST=SU;BYDAY='+jsonParser.getRepeat(i)],
         };
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
 
         //Commented out to not spam my calendar
         const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
@@ -151,7 +185,11 @@ class App extends Component {
 
     javaTest = async (e) =>{
         const apiCall = await fetch("http://localhost:4567/my",{
+<<<<<<< HEAD
             mode : "cors",
+=======
+            mode : "cors",   
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
             method : "get",
         });
         //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
@@ -161,7 +199,11 @@ class App extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         const {
+=======
+        const { 
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
             user,
             isDone,
             isAuthenticated
@@ -171,21 +213,39 @@ class App extends Component {
             (
                 <div>
                     <div>
+<<<<<<< HEAD
                         <Spinner
                             givenName={user.givenName}
+=======
+                        <Spinner 
+                            givenName={user.givenName} 
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
                             isDone={isDone}
                         />
                     </div>
                     <button onClick={this.logout} class="button">
                             Log out
                     </button>
+<<<<<<< HEAD
+=======
+                    <div>
+                        <button onClick={this.getEvents}>
+                            Get Events
+                        </button>
+                    </div>
+                    <div>
+                        <button onClick={this.javaTest}>
+                            Java Test
+                        </button>
+                    </div>
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
                 </div>
             ) :
             (
                 <div>
 
                     <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
+                        clientId={"config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}

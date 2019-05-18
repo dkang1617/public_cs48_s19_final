@@ -32,4 +32,8 @@ class JsonParser{
 	}
 }
 
+<<<<<<< HEAD
 export default JsonParser;
+=======
+export default JsonParser;
+>>>>>>> 6e61775750d95c2be1f39fa90b28691416097a75
