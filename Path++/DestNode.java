@@ -1,6 +1,7 @@
 /* written by Arthur Phan for CS48- Organized (All-Stars)
 class DestNode is a node, to be used for linked list */
 
+/* depreciated; maps related stuff done in javascript */
 
 public class DestNode{
 
