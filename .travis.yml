@@ -2,7 +2,8 @@ language: java
 java:
     - "java"
 before script:
-    mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - cd organized/src/Backend
+    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
     - make
     - mvn test -B

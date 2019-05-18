@@ -18,7 +18,6 @@ public class servertest {
         port(9000);
         corsfilter cor = new corsfilter();
         cor.apply();
-        get("/hello",(req,res) -> ("Hello World"));
         get("/json",(req,res) -> {
 
             JSONObject json = new JSONObject(IOUtils.toString(new URL("https://raw.githubusercontent.com/dkang1617/myjsontest/master/db.json"), Charset.forName("UTF-8")));
@@ -47,7 +46,7 @@ public class servertest {
 //                        return gson;
 
             return json;
-            
+
 
         });
 
