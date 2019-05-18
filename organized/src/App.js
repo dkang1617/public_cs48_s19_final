@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import config from './config.json'
+import config from './config.json';
+import JsonParser from './JsonParser';
+import Spinner from './component/Spinner';
 
 
 class App extends Component {
 
-    state = {
-        isAuthenticated: false,
-        user: null,
-        token: '',
-        email: '',
-        timezone:'',
-        eventName:'',
-        startDate:'',
-        endTime:''
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAuthenticated: false,
+            user: null,
+            token: '',
+            email: '',
+            timezone:'',
+            isDone:false
+        };
+
+        this.timeout = null;
+    }
+
+    setIsDoneTimeout = () => {
+        this.timeout = setTimeout(() => {
+            this.setState({ isDone: true });
+        }, 5000)
+    }
 
     logout = () => {
-        this.setState({isAuthenticated: false, token: '', user: null,email:'',timezone:'',eventName:'',startDate:'',endTime:''})
+        this.setState({
+            isAuthenticated: false,
+            token: '',
+            user: null,
+            email:'',
+            timezone:'',
+            eventName:'',
+            startDate:'',
+            endTime:''
+        })
     };
 
     googleResponse = (e) => {
@@ -29,8 +49,11 @@ class App extends Component {
             token:response.tokenObj.access_token,
             email:response.profileObj.email
         });
+        this.setIsDoneTimeout();
+        this.makeEvent();
 
     };
+
     onFailure = (error) => {
       alert("Login failed");
     }
@@ -49,6 +72,7 @@ class App extends Component {
         const data = await apiCall.json();
         console.log(data);
         this.setState({timezone:data.timeZone})
+
     }
 
     getCalendarIDs = async (e) =>{
@@ -63,32 +87,53 @@ class App extends Component {
     }
 
     makeEvent = async (e) =>{
-        e.preventDefault();
-        const eventName = e.target.elements.eventName.value;
-        const startDate = e.target.elements.startDate.value;
-        const endDate = e.target.elements.endDate.value;
-        //Refer to how-to-use-the-google-calendar-api resource from slack
-        //Not quite sure how this works, guessing we need to encode or string before we can send it to make an event
-        var makeQuerystring = params =>
-            Object.keys(params)
-                .map(key => {
-                   return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
-                })
-                .join("&");
+        // e.preventDefault();
+        //See https://developers.google.com/calendar/create-events for more info
+        //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
+        // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
+        //     method:'get',
+        //     mode:'cors'
+        // })
+        const apiCall = await fetch("http://localhost:9000/json",{
+            method:'get',
+            mode:'cors'
+        })
+        const data = await apiCall.json();
+        console.log(data);
+        console.log(data.Courses);
+        const jsonParser = new JsonParser(data.Courses);
+        const courseCount = data.Courses.length;
+        console.log(courseCount);
+        for(var i = 0 ; i < courseCount; i++){
+            console.log(jsonParser.getID(i)+' Meets at:'+jsonParser.getStartTime(i)+' Ends at:'+jsonParser.getEndTime(i));
+            console.log(jsonParser.getDate(i))
+            console.log(jsonParser.getRepeat(i))
 
-        //Maybe don't use quickAdd since it chooses the date in a "smart" way, prob want something I just punch in
-        const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events/quickAdd",{
+            const event={
+                'summary' : '{Organized} '+jsonParser.getCourse(i),
+                'start' : {
+                    //Gonna need to make something to parse the json file, current format needs tweeking before being made into events, hardcode for now
+                    'dateTime' : jsonParser.getDate(i)+jsonParser.getStartTime(i),
+                    'timeZone' : 'America/Los_Angeles',
+                },
+                'end' : {
+                    'dateTime' : jsonParser.getDate(i)+jsonParser.getEndTime(i),
+                    'timeZone' : 'America/Los_Angeles',
+                },
+                'recurrence' : ['RRULE:FREQ=WEEKLY;UNTIL=20190614T000000Z;WKST=SU;BYDAY='+jsonParser.getRepeat(i)],
+        };
+
+
+        //Commented out to not spam my calendar
+        const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
             method:"post",
-            body: makeQuerystring({
-                text: eventName+" "+startDate+" "+endDate
-            }),
+            body : JSON.stringify(event),
             headers:{
-                "Content-Type": "application/x-www-form-urlencoded",
+                'Content-Type': 'application/json ; charset=UTF-8',
                 Authorization: "Bearer "+this.state.token,
             }
         })
-        console.log(eventName+' '+startDate+' '+endDate)
-        console.log(makeQuerystring({eventName}))
+    }
 
     }
 
@@ -104,17 +149,36 @@ class App extends Component {
 
     }
 
+    javaTest = async (e) =>{
+        const apiCall = await fetch("http://localhost:4567/my",{
+            mode : "cors",
+            method : "get",
+        });
+        //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
+        const data = apiCall.text();
+        //const data = await apiCall.json();
+        data.then((value)=>{console.log(value)});
+    }
+
     render() {
-        let content = !!this.state.isAuthenticated ?
+        const {
+            user,
+            isDone,
+            isAuthenticated
+        } = this.state;
+
+        let content = isAuthenticated ?
             (
                 <div>
-                    <h3>Welcome {this.state.user.givenName}, Give us a moment to organize your life! </h3>
-                     <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                    <br></br>
-                    <br></br>
+                    <div>
+                        <Spinner
+                            givenName={user.givenName}
+                            isDone={isDone}
+                        />
+                    </div>
                     <button onClick={this.logout} class="button">
                             Log out
-                        </button>
+                    </button>
                 </div>
             ) :
             (
