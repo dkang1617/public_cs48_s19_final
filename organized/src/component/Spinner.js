@@ -10,6 +10,7 @@ const Spinner =props=>(
 						<br></br>
 						<br></br>
 				  </div>
+
 						:
 						<div>
                         <h3>Welcome {props.givenName}, Give us a moment to organize your life! </h3>
@@ -17,9 +18,9 @@ const Spinner =props=>(
                         <br></br>
                         <br></br>
                         </div>
-
                     }
               </div>
 )
 
 export default Spinner;
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import config from './config.json';
+// import config from './config.json';
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 
@@ -25,12 +25,14 @@ class App extends Component {
         this.timeout = setTimeout(() => {
             this.setState({ isDone: true });
         }, 5000)
+
     }
 
     logout = () => {
         this.setState({
             isAuthenticated: false,
             token: '',
+
             user: null,
             email:'',
             timezone:'',
@@ -50,7 +52,8 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
-        this.makeEvent();
+        //this.makeEvent();
+
 
     };
 
@@ -90,10 +93,8 @@ class App extends Component {
         // e.preventDefault();
         //See https://developers.google.com/calendar/create-events for more info
         //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
+
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
-        //     method:'get',
-        //     mode:'cors'
-        // })
         const apiCall = await fetch("http://localhost:9000/json",{
             method:'get',
             mode:'cors'
@@ -104,6 +105,7 @@ class App extends Component {
         const jsonParser = new JsonParser(data.Courses);
         const courseCount = data.Courses.length;
         console.log(courseCount);
+
         for(var i = 0 ; i < courseCount; i++){
             console.log(jsonParser.getID(i)+' Meets at:'+jsonParser.getStartTime(i)+' Ends at:'+jsonParser.getEndTime(i));
             console.log(jsonParser.getDate(i))
@@ -185,7 +187,7 @@ class App extends Component {
                 <div>
 
                     <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
+                        clientId={"config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}

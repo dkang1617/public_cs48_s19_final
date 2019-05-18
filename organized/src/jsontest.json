@@ -1,0 +1,52 @@
+{
+	"Courses": [
+
+		{
+			"id":"CMPSC48",
+			"fullname":"Computer Science Project",
+			"idcode":"07781",
+			"meetingdayone":"M",
+			"meetingtimeone":"14:00",
+			"meetingendone":"15:15",
+			"meetingdaytwo":"W",
+			"meetingtimetwo":"14:00",
+			"meetingendtwo":"15:15"
+		},
+
+		{
+			"id":"CMPSC56",
+			"fullname":"Advanced Applications Programming",
+			"idcode":"49452",
+			"meetingdayone":"M",
+			"meetingtimeone":"17:00",
+			"meetingendone":"18:15",
+			"meetingdaytwo":"W",
+			"meetingtimetwo":"17:00",
+			"meetingendtwo":"18:15"
+		},
+
+		{
+			"id":"EARTH20",
+			"fullname":"Geological Catastrophes",
+			"idcode":"11130",
+			"meetingdayone":"T",
+			"meetingtimeone":"09:30",
+			"meetingendone":"10:45",
+			"meetingdaytwo":"R",
+			"meetingtimetwo":"09:30",
+			"meetingendtwo":"10:45"
+		},
+
+		{
+			"id":"PSTAT10",
+			"fullname":"Data Science Principles",
+			"idcode":"41491",
+			"meetingdayone":"M",
+			"meetingtimeone":"11:00",
+			"meetingendone":"12:15",
+			"meetingdaytwo":"W",
+			"meetingtimetwo":"11:00",
+			"meetingendtwo":"12:15"
+		}
+	]
+}
