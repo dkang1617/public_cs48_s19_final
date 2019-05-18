@@ -1,7 +1,13 @@
 language: java
 java:
     - "java"
-script: make # && make test
+before script:
+    mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+    - make
+    - mvn test -B
+
+
 
 language: node_js
 node_js:
