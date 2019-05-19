@@ -106,7 +106,7 @@ class App extends Component {
             console.log(jsonParser.getDate(i))
             console.log(jsonParser.getRepeat(i))
             const event={
-                'summary' : '{Organized} '+jsonParser.getCourse(i),
+                'summary' : '{Organized} '+jsonParser.getID(i),
                 'start' : {
                     //Gonna need to make something to parse the json file, current format needs tweeking before being made into events, hardcode for now
                     'dateTime' : jsonParser.getDate(i)+jsonParser.getStartTime(i),
