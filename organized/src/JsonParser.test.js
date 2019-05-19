@@ -25,5 +25,5 @@ it('Test getID', () => {
 it('Test getDate', () => {
 	const testJson = new JsonParser(jsontest);
 	expect(testJson.getDate(0)).toEqual("2019-05-08T");
-});
+})
 	
