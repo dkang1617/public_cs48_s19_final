@@ -1,6 +1,16 @@
-#language: java
-#java:
-#    - "java"
+language: java
+java:
+    - "java"
+script: make # && make test
+
 language: node_js
 node_js:
-    - "node"
+  - "stable"
+cache:
+  directories:
+    - organized/node_modules
+before_script:
+  - cd organized
+  - npm install
+script:
+  - npm test
