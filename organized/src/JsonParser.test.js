@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import JsonParser from './JsonParser';
 import jsontest from './jsontest';
 
 it('Is test', () => {
