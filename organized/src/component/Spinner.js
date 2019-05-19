@@ -14,7 +14,7 @@ const Spinner =props=>(
 						:
 						<div>
                         <h3>Welcome {props.givenName}, Give us a moment to organize your life! </h3>
-                         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                         <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                         <br></br>
                         <br></br>
                         </div>
