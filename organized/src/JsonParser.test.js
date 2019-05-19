@@ -19,7 +19,7 @@ it('Test getEndTime', () => {
 
 it('Test getID', () => {
 	const testJson = new JsonParser(jsontest.Courses);
-	expect(testJson.getID(0)).toEqual("12345");
+	expect(testJson.getID(0)).toEqual("CS130A");
 });
 
 it('Test getDate', () => {
