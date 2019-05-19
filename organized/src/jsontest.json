@@ -12,6 +12,20 @@
     			"meetingtimetwo": "2019-05-10T15:00:00",
     			"meetingendtwo": "2019-05-10T16:15:00",
     			"building": "Phelps Hall"
-		}
+		},
+		
+		{
+			"id":"CS130A",
+			"fullname":"Computer Science 130A",
+			"idcode":"12345",
+			"meetingdayone": "W",
+    			"meetingtimeone": "2019-05-08T15:00:00",
+    			"meetingendone": "2019-05-08T16:15:00",
+    			"meetingdaytwo": "F",
+    			"meetingtimetwo": "2019-05-10T15:00:00",
+    			"meetingendtwo": "2019-05-10T16:15:00",
+    			"building": "Phelps Hall"
+		}		
+		
 	]
 }
