@@ -1,16 +1,20 @@
 language: java
 java:
     - "java"
-script: make # && make test
-
+sudo: false
 language: node_js
 node_js:
-  - "stable"
+    - "stable"
 cache:
-  directories:
+    directories:
     - organized/node_modules
 before_script:
-  - cd organized
-  - npm install
+    - cd organized/src/Backend
+    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - cd organized
+    - npm install
 script:
-  - npm test
+    - mvn clean verify
+    - make
+    - mvn test -B
+    - npm test
