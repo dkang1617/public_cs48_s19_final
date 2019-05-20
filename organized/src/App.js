@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-<<<<<<< HEAD
 //import config from './config.json';
-=======
-// import config from './config.json';
->>>>>>> 5ed00cf61543825bc1130dd2a034e93683623f87
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 
@@ -54,11 +50,7 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
-<<<<<<< HEAD
         //this.makeEvent();
-=======
-        this.makeEvent();
->>>>>>> 5ed00cf61543825bc1130dd2a034e93683623f87
     };
 
     onFailure = (error) => {
@@ -154,11 +146,7 @@ class App extends Component {
 
     javaTest = async (e) =>{
         const apiCall = await fetch("http://localhost:4567/my",{
-<<<<<<< HEAD
             mode : "cors",   
-=======
-            mode : "cors",
->>>>>>> 5ed00cf61543825bc1130dd2a034e93683623f87
             method : "get",
         });
         //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
@@ -168,10 +156,6 @@ class App extends Component {
     }
 
     render() {
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ed00cf61543825bc1130dd2a034e93683623f87
         const {
             user,
             isDone,
@@ -190,7 +174,6 @@ class App extends Component {
                     <button onClick={this.logout} className="button">
                             Log out
                     </button>
-<<<<<<< HEAD
                     <div>
                         <button onClick={this.getEvents}>
                             Get Events
@@ -201,9 +184,6 @@ class App extends Component {
                             Java Test
                         </button>
                     </div>
-
-=======
->>>>>>> 5ed00cf61543825bc1130dd2a034e93683623f87
                 </div>
             ) :
             (
