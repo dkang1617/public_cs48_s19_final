@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import JsonParser from './JsonParser';
 
 class Map extends Component {
+	// cd into <repo>/organized folder
+	// npm install for dependencies
+	// npm start to run webpage
 
-	/* array for storing iframe strings */
 	addToArray = async (e) =>{
 		/* dkang = Daniels' online API */
 		// const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 
 		/* local host = Krishna's json stuff - calls java */
 		const apiCall = await fetch("http://localhost:9000/json",{
-			/* method is GET call, mode specifies which mode - cors is the secure route */
+		/* method is GET call, mode specifies which mode - cors is the secure route */
 			method:'get',
 			mode:'cors'
 		})
@@ -31,6 +33,7 @@ class Map extends Component {
 
 		/* to call variables from input use e.target.elements.<name>.value */
 		var buildingArray = [e.target.elements.srcBuilding.value]
+
 		/* add all course buildings to array from jsonParser object */
 		for(var i = 0; i < courseCount; i++){
 			buildingArray.push(jsonParser.getBuilding(i));
@@ -41,16 +44,23 @@ class Map extends Component {
 			console.log(buildingArray[i]);
 		}
 
+		/* iterate through array and call google maps api */
+		// insert here
 
 	}
 
 	render(){
 		return(
-			<div>
-			{/* 	website interface has a text input, storing in srcBuilding
+			{/* website interface has a text input, storing in srcBuilding
 				the transportation method defaults to walking, but can be checked to biking
 				and is stored in transMeth
-			*/}	
+			*/}
+
+			// 1. necessary: get the submit form to work
+
+			// 2. return new tab of website
+
+			// 3. load the embedded google maps on that page
 			<div>
 				<form action ={this.addToArray}>
 					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"/><br/>
