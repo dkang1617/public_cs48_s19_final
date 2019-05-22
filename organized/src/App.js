@@ -156,6 +156,7 @@ class App extends Component {
         let content = isAuthenticated ?
             (
                 <div>
+
                     <div>
                         <Spinner
                             givenName={user.givenName}
@@ -165,21 +166,10 @@ class App extends Component {
                     <button onClick={this.logout} className="button">
                             Log out
                     </button>
-                    <div>
-                        <button onClick={this.getEvents}>
-                            Get Events
-                        </button>
-                    </div>
-                    <div>
-                        <button onClick={this.javaTest}>
-                            Java Test
-                        </button>
-                    </div>
                 </div>
             ) :
             (
                 <div>
-
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
