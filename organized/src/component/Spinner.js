@@ -1,3 +1,4 @@
+
 import React from "react";
 import {BrowserRouter,Link} from 'react-router-dom';	
 
@@ -17,7 +18,8 @@ const Spinner =props=>(
 						:
 						<div>
                         <h3>Welcome {props.givenName}, Give us a moment to organize your life! </h3>
-                         <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                        <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
                         <br></br>
                         <br></br>
                         </div>
@@ -28,4 +30,6 @@ const Spinner =props=>(
 
 
 export default Spinner;
+
+
 
