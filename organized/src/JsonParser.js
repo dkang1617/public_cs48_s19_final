@@ -9,13 +9,17 @@ class JsonParser{
 		//Makes a substring that just contains the time, no date info
 		return(this.jsonFile[index].meetingtimeone.substring(11));
 	}
+
 	getEndTime(index){
 		return(this.jsonFile[index].meetingendone.substring(11));
 	}
+
+	/* returns course title */
 	getID(index){
 		return(this.jsonFile[index].id);
 	}
-	//Figure out the repeating rule
+
+	/* determines what days they are on */
 	getRepeat(index){
 		var dict = {
 			"M" : "MO,WE",
@@ -24,8 +28,13 @@ class JsonParser{
 		const day = this.jsonFile[index].meetingdayone
 		return(dict[day]);
 	}
+
 	getDate(index){
 		return(this.jsonFile[index].meetingtimeone.substring(0,11))
+	}
+
+	getBuilding(index){
+		return(this.jsonFile[index].building);
 	}
 }
 
