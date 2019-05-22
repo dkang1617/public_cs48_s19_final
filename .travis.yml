@@ -16,6 +16,6 @@ before_script:
     - npm install
 script:
 #    - mvn clean verify
-    - make
+#    - make
 #    - mvn test -B
     - npm test
