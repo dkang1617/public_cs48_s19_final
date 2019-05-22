@@ -9,10 +9,11 @@ cache:
     directories:
     - organized/node_modules
 before_script:
-    - cd organized/src/Backend
+#    - cd organized/src/Backend
 #    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 #    - cd ..
 #    - cd ..
+    - cd organized
     - npm install
 script:
 #    - mvn clean verify
