@@ -65,7 +65,7 @@ class App extends Component {
         //See https://developers.google.com/calendar/create-events for more info
         //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
 	
-		/* dkang = Daniels' online API */
+	/* dkang = Daniels' online API */
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 		
 		/* local host = Krishna's json stuff - calls java */
