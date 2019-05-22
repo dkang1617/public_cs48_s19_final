@@ -1,3 +1,9 @@
+newtry{
+  color: white;
+  size: 33px;
+}
+
+
 body {
   border-style: solid;
   border-width: 5px;
@@ -200,4 +206,15 @@ transition-duration: 0.4s;
   100% {
     transform: rotate(360deg);
   }
+}
+
+.Movedown {
+
+  position: relative;
+  
+  top: 200px;
+}
+
+.mainpagetitle{
+  font-size: 35px;
 }
