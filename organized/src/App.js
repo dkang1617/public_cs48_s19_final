@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import config from './config.json';
-
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
-
-
-
-
-
-
-
+/* make sure JsonParser.js is in the same folder as App.js */
+/**********************************************
+import config from './config.json'; // uncomment for testing purposes
+***********************************************/
+/* component class from react; handles html for the main webpage, not for Maps*/
 
 class App extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -33,7 +28,7 @@ class App extends Component {
             this.setState({ isDone: true });
         }, 5000)
     }
-
+	/* button for logout */
     logout = () => {
         this.setState({
             isAuthenticated: false,
@@ -46,7 +41,7 @@ class App extends Component {
             endTime:''
         })
     };
-
+	/* google button, which calls OAuth and calls makeEvent */
     googleResponse = (e) => {
         const response = e;
         console.log(response);
@@ -57,51 +52,37 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
-        //this.makeEvent();
+        // this.makeEvent(); // spams calendar - remove comment for demo
     };
 
+	/* error message */
     onFailure = (error) => {
       alert("Login failed");
     }
 
-    //This function handles all the logic behind the "Request Calendar!" button.
-    requestCalendar = async (e) =>{
-        //Is there someway to get a list of all calendar associated with an account? Would the calendar ID just be the email?
-        //As it is now, would need user to input their calendar ID if its not their email.
-        const apiCall =  await fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList/"+this.state.user.email,{
-            method: "get",
-            headers:{
-                //Making the API call
-                Authorization: "Bearer "+this.state.token
-            }
-        });
-        const data = await apiCall.json();
-        console.log(data);
-        this.setState({timezone:data.timeZone})
-
-    }
-
-    getCalendarIDs = async (e) =>{
-        const apiCall = await fetch("https://www.googleapis.com/calendar/v3/users/me/calendarList",{
-            method: "get",
-            headers:{
-                Authorization: "Bearer "+this.state.token
-            }
-        });
-        const data = await apiCall.json();
-        console.log(data);
-    }
-
+	/* handles creation of events on calendar. Automatically called on google call  */
     makeEvent = async (e) =>{
-        // e.preventDefault();
+        // e.preventDefault(); Used to be requested by button (not anymore).
         //See https://developers.google.com/calendar/create-events for more info
         //In the actual app jsontest would be replaced by the result of the GOLD Schedules API call.
 
+        /* dkang = Daniels' online API */
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
+
+		/* local host = Krishna's json stuff - calls java */
         const apiCall = await fetch("http://localhost:9000/json",{
+			/* method is GET call, mode specifies which mode - cors is the secure route */
             method:'get',
             mode:'cors'
         })
+
+		/*
+			data waits on api
+			console.log is debug
+			jsonParser object iterates through the json
+			couseCount counts how many courses there are
+		*/
+
         const data = await apiCall.json();
         console.log(data);
         console.log(data.Courses);
@@ -111,7 +92,9 @@ class App extends Component {
         for(var i = 0 ; i < courseCount; i++){
             console.log(jsonParser.getID(i)+' Meets at:'+jsonParser.getStartTime(i)+' Ends at:'+jsonParser.getEndTime(i));
             console.log(jsonParser.getDate(i))
-            console.log(jsonParser.getRepeat(i))
+            console.log(jsonParser.getRepeat(i)) // debug
+
+			/* event object is sent to calendar in the format provided by google */
             const event={
                 'summary' : '{Organized} '+jsonParser.getID(i),
                 'start' : {
@@ -126,7 +109,7 @@ class App extends Component {
                 'recurrence' : ['RRULE:FREQ=WEEKLY;UNTIL=20190614T000000Z;WKST=SU;BYDAY='+jsonParser.getRepeat(i)],
         };
 
-        //Commented out to not spam my calendar
+		/* this is where the events are being added to calendar */
         const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
             method:"post",
             body : JSON.stringify(event),
@@ -137,8 +120,9 @@ class App extends Component {
         })
     }
 
-    }
+}
 
+	/* debug */
     getEvents = async (e) => {
         const apiCall = await fetch("https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
             method: "get",
@@ -148,12 +132,12 @@ class App extends Component {
         })
         const data = await apiCall.json();
         console.log(data)
-
     }
 
+	/* debug for java component */
     javaTest = async (e) =>{
         const apiCall = await fetch("http://localhost:4567/my",{
-            mode : "cors",   
+            mode : "cors",
             method : "get",
         });
         //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
@@ -162,6 +146,7 @@ class App extends Component {
         data.then((value)=>{console.log(value)});
     }
 
+	/* JSX/ html related stuff for website visuals */
     render() {
         
         
@@ -177,8 +162,10 @@ class App extends Component {
             (
                 
                 <div>
+
                     <h1>Organized</h1>
                     <div class="re-adjust">
+
                         <Spinner
                             givenName={user.givenName}
                             isDone={isDone}
@@ -187,16 +174,6 @@ class App extends Component {
                     <button onClick={this.logout} className="button">
                             Log out
                     </button>
-                    <div>
-                        <button onClick={this.getEvents}>
-                            Get Events
-                        </button>
-                    </div>
-                    <div>
-                        <button onClick={this.javaTest}>
-                            Java Test
-                        </button>
-                    </div>
                 </div>
             
             ) :
@@ -204,7 +181,7 @@ class App extends Component {
                 <div className="mainpagetitle"> 
                     <h1>Organized</h1> 
                 <div className="Movedown"> 
-                     
+
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
