@@ -176,7 +176,7 @@ class App extends Component {
                     <h1>Organized</h1>
                 <div className="Movedown">
                     <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
+                        clientId={"config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}
