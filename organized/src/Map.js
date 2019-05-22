@@ -46,15 +46,15 @@ class Map extends Component {
 
 	render(){
 		return(
-			<div>
 			/* 	website interface has a text input, storing in srcBuilding
 				the transportation method defaults to walking, but can be checked to biking
 				and is stored in transMeth
 			*/
+			<div>
 				<form onSubmit={this.addToArray}>
-					<input type = "text" name="srcBuilding" placeholder= "Where the source is before going to class"></input>
-					<input type = "radio" name="transMeth" value= "walking" checked> Walking> <br> </br> </input>
-					<input type = "radio" name="transMeth" value= "biking"> Biking <br></br> </input>
+					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"></input>
+					<input type = "radio" name="transMeth" value= "walking" checked> Walking> <br> </input>
+					<input type = "radio" name="transMeth" value= "biking"> Biking <br> </input>
 					<button> Submit </button>
 				</form>
 			</div>

@@ -3,9 +3,11 @@ import { GoogleLogin } from 'react-google-login';
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 /* make sure JsonParser.js is in the same folder as App.js */
-/**********************************************
-import config from './config.json'; // uncomment for testing purposes
-***********************************************/
+
+/**********************************************/
+// import config from './config.json'; // uncomment for testing purposes
+/***********************************************/
+
 /* component class from react; handles html for the main webpage, not for Maps*/
 
 class App extends Component {
@@ -148,10 +150,6 @@ class App extends Component {
 
 	/* JSX/ html related stuff for website visuals */
     render() {
-        
-        
-        
-        
         const {
             user,
             isDone,
@@ -160,12 +158,9 @@ class App extends Component {
 
         let content = isAuthenticated ?
             (
-                
                 <div>
-
                     <h1>Organized</h1>
                     <div class="re-adjust">
-
                         <Spinner
                             givenName={user.givenName}
                             isDone={isDone}
@@ -175,13 +170,11 @@ class App extends Component {
                             Log out
                     </button>
                 </div>
-            
             ) :
             (
-                <div className="mainpagetitle"> 
-                    <h1>Organized</h1> 
-                <div className="Movedown"> 
-
+                <div className="mainpagetitle">
+                    <h1>Organized</h1>
+                <div className="Movedown">
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
@@ -191,9 +184,8 @@ class App extends Component {
                         scope="https://www.googleapis.com/auth/calendar.events"
                     />
                 </div>
-                </div> 
+                </div>
             );
-
         return (
             <div className="App">
                 {content}
