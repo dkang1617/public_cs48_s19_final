@@ -27,9 +27,6 @@ class JsonParser{
 	getDate(index){
 		return(this.jsonFile[index].meetingtimeone.substring(0,11))
 	}
-	getCourse(index){
-		return(this.jsonFile[index].id)
-	}
 }
 
 
