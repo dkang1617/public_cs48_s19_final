@@ -51,11 +51,11 @@ class Map extends Component {
 				and is stored in transMeth
 			*/
 			<div>
-				<form onSubmit={this.addToArray}>
+				<form action ={this.addToArray}>
 					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"></input>
 					<input type = "radio" name="transMeth" value= "walking" checked> Walking> <br> </input>
 					<input type = "radio" name="transMeth" value= "biking"> Biking <br> </input>
-					<button> Submit </button>
+					<input type = "submit" value = "Submit"> </input>
 				</form>
 			</div>
 		);
