@@ -3,10 +3,9 @@ import { GoogleLogin } from 'react-google-login';
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 /* make sure JsonParser.js is in the same folder as App.js */
-/**********************************************
-import config from './config.json'; // uncomment for testing purposes
-***********************************************/
-/* component class from react; handles html for the main webpage, not for Maps*/
+
+import config from './config.json'; 
+
 
 class App extends Component {
     constructor(props) {
@@ -150,8 +149,6 @@ class App extends Component {
     render() {
         
         
-        
-        
         const {
             user,
             isDone,
@@ -162,8 +159,9 @@ class App extends Component {
             (
                 
                 <div>
-
+                    <div className="mainpagetitle">
                     <h1>Organized</h1>
+                    </div>
                     <div class="re-adjust">
 
                         <Spinner
@@ -171,9 +169,11 @@ class App extends Component {
                             isDone={isDone}
                         />
                     </div>
+                    <div className="re-adjusttwo">
                     <button onClick={this.logout} className="button">
                             Log out
                     </button>
+                    </div>
                 </div>
             
             ) :
