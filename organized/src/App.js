@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import config from './config.json';
+//import config from './config.json';
+
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 
@@ -50,7 +51,7 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
-        this.makeEvent();
+        //this.makeEvent();
     };
 
     onFailure = (error) => {
@@ -106,7 +107,7 @@ class App extends Component {
             console.log(jsonParser.getDate(i))
             console.log(jsonParser.getRepeat(i))
             const event={
-                'summary' : '{Organized} '+jsonParser.getCourse(i),
+                'summary' : '{Organized} '+jsonParser.getID(i),
                 'start' : {
                     //Gonna need to make something to parse the json file, current format needs tweeking before being made into events, hardcode for now
                     'dateTime' : jsonParser.getDate(i)+jsonParser.getStartTime(i),
@@ -146,7 +147,7 @@ class App extends Component {
 
     javaTest = async (e) =>{
         const apiCall = await fetch("http://localhost:4567/my",{
-            mode : "cors",
+            mode : "cors",   
             method : "get",
         });
         //Fix from https://daveceddia.com/unexpected-token-in-json-at-position-0/
@@ -171,9 +172,19 @@ class App extends Component {
                             isDone={isDone}
                         />
                     </div>
-                    <button onClick={this.logout} class="button">
+                    <button onClick={this.logout} className="button">
                             Log out
                     </button>
+                    <div>
+                        <button onClick={this.getEvents}>
+                            Get Events
+                        </button>
+                    </div>
+                    <div>
+                        <button onClick={this.javaTest}>
+                            Java Test
+                        </button>
+                    </div>
                 </div>
             ) :
             (

@@ -13,19 +13,16 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-	DestNode.java \
-	implementation.java \
+	Main.java \
 
-#TEST = \
-	DestNode.java \
-	implementation.java \
-	basicTests.java \
+TEST = \
+	TestControllerTest.java
 
 default: classes
-#test: test
+test: test
 
 classes: $(CLASSES:.java=.class)
-#test: $(TESTS:.java=.class)
+test: $(TESTS:.java=.class)
 
 clean:
 	$(RM) *.class
