@@ -40,9 +40,8 @@ class Map extends Component {
 		}
 
 		/* this is where the events are being added to calendar */
-		const apiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
-			method:"post",
-			body : JSON.stringify(event),
+		const mapApiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
+			method:"get",
 			headers:{
 				'Content-Type': 'application/json ; charset=UTF-8',
 				Authorization: "Bearer "+this.state.token,
@@ -54,9 +53,9 @@ class Map extends Component {
 		return(
 			<div>
 				<form onSubmit={this.addToArray}>
-					<input type = "text" name="srcBuilding" placeholder= "Where the source is before going to class"/>
-					<input type = "radio" name="transMeth" value= "walking" checked> Walking <br>
-					<input type = "radio" name="transMeth" value= "biking"> Biking <br>
+					<input type = "text" name="srcBuilding" placeholder= "Where the source is before going to class"></input>
+					<input type = "radio" name="transMeth" value= "walking" checked> Walking> <br> </br> </input>
+					<input type = "radio" name="transMeth" value= "biking"> Biking <br></br> </input>
 					<button> Submit </button>
 				</form>
 			</div>

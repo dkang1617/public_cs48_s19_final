@@ -4,7 +4,7 @@ import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 /* make sure JsonParser.js is in the same folder as App.js */
 
-//import config from './config.json'; // uncomment for testing purposes
+import config from './config.json'; // uncomment for testing purposes
 
 /* component class from react; handles html for the main webpage, not for Maps*/
 class App extends Component {
