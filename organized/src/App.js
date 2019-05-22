@@ -177,7 +177,8 @@ class App extends Component {
             (
                 
                 <div>
-                    <div>
+                    <h1>Organized</h1>
+                    <div class="re-adjust">
                         <Spinner
                             givenName={user.givenName}
                             isDone={isDone}
