@@ -1,4 +1,5 @@
 import React from "react";
+import {BrowserRouter,Link} from 'react-router-dom';	
 
 const Spinner =props=>(
 
@@ -6,7 +7,9 @@ const Spinner =props=>(
 		{	props.isDone ?
 					<div>
 						<h3>Your life has been organized! Click <a href="https://calendar.google.com/calendar/r/month" target="_blank">here</a> to see you calendar</h3>
-						<a href="page2.html" target="_blank"><button class="button">Map</button></a>
+							<Link to="/map">
+								<button class="button">Map</button>
+							</Link>
 						<br></br>
 						<br></br>
 				  </div>
