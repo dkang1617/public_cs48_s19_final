@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-//import config from './config.json';
+import config from './config.json';
 
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
+
+
+
+
+
+
 
 
 class App extends Component {
@@ -157,6 +163,10 @@ class App extends Component {
     }
 
     render() {
+        
+        
+        
+        
         const {
             user,
             isDone,
@@ -165,6 +175,7 @@ class App extends Component {
 
         let content = isAuthenticated ?
             (
+                
                 <div>
                     <div>
                         <Spinner
@@ -186,10 +197,13 @@ class App extends Component {
                         </button>
                     </div>
                 </div>
+            
             ) :
             (
-                <div>
-
+                <div className="mainpagetitle"> 
+                    <h1>Organized</h1> 
+                <div className="Movedown"> 
+                     
                     <GoogleLogin
                         clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
@@ -199,6 +213,7 @@ class App extends Component {
                         scope="https://www.googleapis.com/auth/calendar.events"
                     />
                 </div>
+                </div> 
             );
 
         return (
