@@ -59,7 +59,7 @@ body {
 h1,
 h6 {
   font-family: 'Open Sans';
-  font-weight: 300;
+  font-weight: 900;
   text-align: center;
   position: absolute;
   top: 27%;
@@ -216,5 +216,26 @@ transition-duration: 0.4s;
 }
 
 .mainpagetitle{
+
   font-size: 35px;
+  position: relative;
+  font-weight: bold;
+  top: 120px;
+
+}
+
+
+
+
+
+
+.re-adjust{
+  position: relative;
+  top: 280px;
+
+}
+
+.re-adjusttwo{
+position: relative;
+top: 285px;
 }

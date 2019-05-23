@@ -4,6 +4,7 @@ import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
 /* make sure JsonParser.js is in the same folder as App.js */
 
+
 /**********************************************/
 // import config from './config.json'; // uncomment for testing purposes
 /***********************************************/
@@ -150,6 +151,9 @@ class App extends Component {
 
 	/* JSX/ html related stuff for website visuals */
     render() {
+        
+        
+
         const {
             user,
             isDone,
@@ -159,16 +163,21 @@ class App extends Component {
         let content = isAuthenticated ?
             (
                 <div>
+                    <div className="mainpagetitle">
+
                     <h1>Organized</h1>
+                    </div>
                     <div class="re-adjust">
                         <Spinner
                             givenName={user.givenName}
                             isDone={isDone}
                         />
                     </div>
+                    <div className="re-adjusttwo">
                     <button onClick={this.logout} className="button">
                             Log out
                     </button>
+                    </div>
                 </div>
             ) :
             (
