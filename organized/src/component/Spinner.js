@@ -1,6 +1,6 @@
 
 import React from "react";
-import {BrowserRouter,Link} from 'react-router-dom';	
+import {BrowserRouter,Link} from 'react-router-dom';
 
 const Spinner =props=>(
 
@@ -30,6 +30,3 @@ const Spinner =props=>(
 
 
 export default Spinner;
-
-
-
