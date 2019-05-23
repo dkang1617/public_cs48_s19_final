@@ -9,7 +9,7 @@ const Spinner =props=>(
 					<div>
 						<h3>Your life has been organized! Click <a href="https://calendar.google.com/calendar/r/month" target="_blank">here</a> to see you calendar</h3>
 							<Link to="/map">
-								<button class="button">Map</button>
+								<button className="button">Map</button>
 							</Link>
 						<br></br>
 						<br></br>

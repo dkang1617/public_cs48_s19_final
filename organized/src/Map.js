@@ -4,11 +4,14 @@ import "./Map.css";
 
 
 
+	// cd into <repo>/organized folder
+	// npm install for dependencies
+	// npm start to run webpage
 
 class Map extends Component {
     /* array for storing iframe strings */
  	  addToArray = async (e) =>{
-
+      
         /* dkang = Daniels' online API */
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 
@@ -21,46 +24,51 @@ class Map extends Component {
             mode:'cors'
         })
 
-        /*  data waits on api
-            console.log is debug
-            jsonParser object iterates through the json
-            couseCount counts how many courses there are
-        */
+		/*	data waits on api
+			console.log is debug
+			jsonParser object iterates through the json
+			couseCount counts how many courses there are
+		*/
 
-        const data = await apiCall.json();
-        console.log(data);
-        console.log(data.Courses);
-        const jsonParser = new JsonParser(data.Courses);
-        const courseCount = data.Courses.length;
-        console.log(courseCount);
-        /* console debug statement */
-        for(var i = 0 ; i < courseCount; i++){
-            console.log(jsonParser.getID(i)+' Meets at:'+jsonParser.getStartTime(i)+' Ends at:'+jsonParser.getEndTime(i));
-            console.log(jsonParser.getDate(i))
-            console.log(jsonParser.getRepeat(i))
-        }
+		/* console debug statement */
+		const data = await apiCall.json();
+		console.log(data);
+		console.log(data.Courses);
+		const jsonParser = new JsonParser(data);
+		const courseCount = data.length;
+		console.log(courseCount);
 
-        /* add all course buildings to array */
-        for(var i = 0; i < courseCount; i++){
+		/* to call variables from input use e.target.elements.<name>.value */
+		var buildingArray = [srcBuilding];
 
-        }
+		/* add all course buildings to array from jsonParser object */
+		for(var i = 0; i < courseCount; i++){
+			buildingArray.push(jsonParser.getBuilding(i));
+		}
 
-        /* this is where the events are being added to calendar */
-        const mapApiCall = await fetch(  "https://www.googleapis.com/calendar/v3/calendars/"+this.state.email+"/events",{
-            method:"get",
-            headers:{
-                'Content-Type': 'application/json ; charset=UTF-8',
-                Authorization: "Bearer "+this.state.token,
-            }
-        })
+		/* console debug statement */
+		for(var i = 0 ; i < buildingArray.length; i++){
+			console.log(buildingArray[i]);
+		}
+
+		/* iterate through array and call google maps api */
+		// insert here
     }
 
     render(){
+      	{/* website interface has a text input, storing in srcBuilding
+				the transportation method defaults to walking, but can be checked to biking
+				and is stored in transMeth
+			
+			// 1. necessary: get the submit form to work
+
+			// 2. return new tab of website
+
+			// 3. load the embedded google maps on that page*/}
         return(
 			<div>
   <div >
     <div >
-
       <form>
         <div className="form-check">
           <label>
@@ -74,7 +82,6 @@ class Map extends Component {
             	Walking
           </label>
         </div>
-
         <div className="form-check">
           <label>
             <input
@@ -86,24 +93,18 @@ class Map extends Component {
             Biking
           </label>
         </div>
-
 		<div className="form-group">
           <button className="btn btn-primary mt-2" type="submit">
 		  <a href="page2.html">Summit</a>
-           
           </button>
         </div>
-
         <div className="changer"> 
-
 		</div>
       </form>
 
     </div>
   </div>
 </div>
-
-            
         );
     }
 }
