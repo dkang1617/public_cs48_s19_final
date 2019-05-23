@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import JsonParser from './JsonParser';
-import "./Map.css"; 
 
-
-
+class Map extends Component {
 	// cd into <repo>/organized folder
 	// npm install for dependencies
 	// npm start to run webpage
 
-class Map extends Component {
-    /* array for storing iframe strings */
- 	  addToArray = async (e) =>{
-      
-        /* dkang = Daniels' online API */
-        // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
+	addToArray = async (e) =>{
+		e.preventDefault();
 
-        /* local host = Krishna's json stuff - calls java */
-        
-        
-        const apiCall = await fetch("http://localhost:9000/json",{
-            /* method is GET call, mode specifies which mode - cors is the secure route */
-            method:'get',
-            mode:'cors'
-        })
+        /* initialized values using user input values and a helper integer */
+		const srcBuilding = e.target.elements.srcBuilding.value;
+        const transMeth = e.target.elements.transMeth.value;
+        var alignCounter = 5;
+
+
+		/* dkang = Daniels' online API */
+		const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
+
+		/* local host = Krishna's json stuff - calls java */
+		// const apiCall = await fetch("http://localhost:9000/json",{
+		/* method is GET call, mode specifies which mode - cors is the secure route */
+			method:'get',
+			mode:'cors'
+		})
 
 		/*	data waits on api
 			console.log is debug
@@ -40,73 +41,76 @@ class Map extends Component {
 
 		/* to call variables from input use e.target.elements.<name>.value */
 		var buildingArray = [srcBuilding];
-
 		/* add all course buildings to array from jsonParser object */
-		for(var i = 0; i < courseCount; i++){
-			buildingArray.push(jsonParser.getBuilding(i));
-		}
+		for(var buildingIterator = 0; buildingIterator < courseCount; buildingIterator++){
+			buildingArray.push(jsonParser.getBuilding(buildingIterator));
+        }
 
-		/* console debug statement */
-		for(var i = 0 ; i < buildingArray.length; i++){
-			console.log(buildingArray[i]);
-		}
+		/* iterate through array to make a url string, then launch the google maps formatted url, ignoring duplicates */
+        for(var urlIterator = (buildingArray.length - 1); urlIterator > 0; urlIterator--){
+            if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
+                console.log("duplicate ignored");
+            }
+            else{
+                var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
+                urlString += buildingArray[urlIterator - 1];
 
-		/* iterate through array and call google maps api */
-		// insert here
-    }
+                urlString += "&destination=";
+                urlString += buildingArray[(urlIterator)];
+
+                urlString += "&travelmode=";
+                urlString += transMeth;
+
+                var alignValues = "top="
+                var alignHelp = (33 * (alignCounter));
+                alignValues += alignHelp;
+                alignValues += ",left=";
+                alignValues += alignHelp;
+                alignValues += ",width=1000,height=500";
+
+                console.log(urlString);
+                console.log(alignValues);
+                window.open(urlString, "_blank", alignValues);
+                alignCounter--;
+            }
+        }
+	}
 
     render(){
-      	{/* website interface has a text input, storing in srcBuilding
-				the transportation method defaults to walking, but can be checked to biking
-				and is stored in transMeth
-			
-			// 1. necessary: get the submit form to work
-
-			// 2. return new tab of website
-
-			// 3. load the embedded google maps on that page*/}
-        return(
+		return(
 			<div>
-  <div >
-    <div >
-      <form>
-        <div className="form-check">
-          <label>
-            <input
-              type="radio"
-              name="react-tips"
-              value="option1"
-              checked={true}
-              className="form-check-input"
-            />
-            	Walking
-          </label>
-        </div>
-        <div className="form-check">
-          <label>
-            <input
-              type="radio"
-              name="react-tips"
-              value="option2"
-              className="form-check-input"
-            />
-            Biking
-          </label>
-        </div>
-		<div className="form-group">
-          <button className="btn btn-primary mt-2" type="submit">
-		  <a href="page2.html">Summit</a>
-          </button>
-        </div>
-        <div className="changer"> 
-		</div>
-      </form>
+                <div>
+                {/* website interface has a text input, storing in srcBuilding
+                    the transportation method defaults to walking, but can be checked to biking
+                    and is stored in transMeth
 
-    </div>
-  </div>
-</div>
-        );
-    }
+                // 1. necessary: get the submit form to work
+
+                // 2. return new tab of website
+
+                // 3. load the embedded google maps on that page
+                // additional comment: after key,
+                // &origin=srcBuilding
+                // &destination=nextplace
+                // &mode=transMeth                         */}
+                </div>
+                    <div>
+                    <div>
+        				<form onSubmit ={this.addToArray}>
+        					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"/><br/>
+        					<input type = "radio" id="walking" name="transMeth" value= "walking" checked/>
+        					<label for = "walking">Walking</label><br/>
+        					<input type = "radio" id="biking" name="transMeth" value= "bicycling"/>
+        					<label for = "biking">Biking</label><br/>
+        					<button>Submit</button>
+        				</form>
+                    </div>
+                    <iframe id="myIframe" src="" height="250px"  width="100%" scrolling="yes" frameborder="0"></iframe>
+                    </div>
+			</div>
+
+		);
+	}
 }
 
 export default Map;
