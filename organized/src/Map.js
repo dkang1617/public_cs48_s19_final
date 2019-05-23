@@ -9,6 +9,7 @@ class Map extends Component {
 	addToArray = async (e) =>{
 		e.preventDefault();
 		const srcBuilding = e.target.elements.srcBuilding.value;
+        const transMeth = e.target.elements.transMeth.value;
 		/* dkang = Daniels' online API */
 		const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 
@@ -35,45 +36,63 @@ class Map extends Component {
 
 		/* to call variables from input use e.target.elements.<name>.value */
 		var buildingArray = [srcBuilding];
-
 		/* add all course buildings to array from jsonParser object */
-		for(var i = 0; i < courseCount; i++){
-			buildingArray.push(jsonParser.getBuilding(i));
+		for(var buildingIterator = 0; buildingIterator < courseCount; buildingIterator++){
+			buildingArray.push(jsonParser.getBuilding(buildingIterator));
 		}
 
 		/* console debug statement */
-		for(var i = 0 ; i < buildingArray.length; i++){
-			console.log(buildingArray[i]);
-		}
+        var buildingString = buildingArray.join("");
 
+        var finalString = "localhost:3000/Map?";
+        finalString += buildingString;
+        finalString += transMeth;
 		/* iterate through array and call google maps api */
+        for(var urlIterator = 0; urlIterator < (buildingArray.length - 1); urlIterator++){
+            var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
+            urlString += buildingArray[urlIterator];
+            urlString += "&destination=";
+            urlString += buildingArray[(urlIterator + 1)];
+            urlString += "&travelmode=";
+            urlString += transMeth;
+            console.log(urlString);
+            window.open(urlString);
+        }
 		// insert here
 
 	}
 
-	render(){
+    render(){
 		return(
 			<div>
-			{/* website interface has a text input, storing in srcBuilding
-				the transportation method defaults to walking, but can be checked to biking
-				and is stored in transMeth
+                <div>
+                {/* website interface has a text input, storing in srcBuilding
+                    the transportation method defaults to walking, but can be checked to biking
+                    and is stored in transMeth
 
+                // 1. necessary: get the submit form to work
 
-			// 1. necessary: get the submit form to work
+                // 2. return new tab of website
 
-			// 2. return new tab of website
-
-			// 3. load the embedded google maps on that page*/}
-			<div>
-				<form onSubmit ={this.addToArray}>
-					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"/><br/>
-					<input type = "radio" id="walking" name="transMeth" value= "walking" checked/>
-					<label for = "walking">Walking</label><br/>
-					<input type = "radio" id="biking" name="transMeth" value= "biking"/>
-					<label for = "biking">Biking</label><br/>
-					<button>Submit</button>
-				</form>
-			</div>
+                // 3. load the embedded google maps on that page
+                // additional comment: after key,
+                // &origin=srcBuilding
+                // &destination=nextplace
+                // &mode=transMeth                         */}
+                </div>
+                    <div>
+                    <div>
+        				<form onSubmit ={this.addToArray}>
+        					<input type = "text" name="srcBuilding" placeholder= "Starting Destination"/><br/>
+        					<input type = "radio" id="walking" name="transMeth" value= "walking" checked/>
+        					<label for = "walking">Walking</label><br/>
+        					<input type = "radio" id="biking" name="transMeth" value= "bicycling"/>
+        					<label for = "biking">Biking</label><br/>
+        					<button>Submit</button>
+        				</form>
+                    </div>
+                    <iframe id="myIframe" src="" height="250px"  width="100%" scrolling="yes" frameborder="0"></iframe>
+                    </div>
 			</div>
 
 		);
