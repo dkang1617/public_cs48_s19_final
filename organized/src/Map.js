@@ -8,8 +8,13 @@ class Map extends Component {
 
 	addToArray = async (e) =>{
 		e.preventDefault();
+
+        /* initialized values using user input values and a helper integer */
 		const srcBuilding = e.target.elements.srcBuilding.value;
         const transMeth = e.target.elements.transMeth.value;
+        var alignCounter = 5;
+
+
 		/* dkang = Daniels' online API */
 		const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 
@@ -39,27 +44,36 @@ class Map extends Component {
 		/* add all course buildings to array from jsonParser object */
 		for(var buildingIterator = 0; buildingIterator < courseCount; buildingIterator++){
 			buildingArray.push(jsonParser.getBuilding(buildingIterator));
-		}
-
-		/* console debug statement */
-        var buildingString = buildingArray.join("");
-
-        var finalString = "localhost:3000/Map?";
-        finalString += buildingString;
-        finalString += transMeth;
-		/* iterate through array and call google maps api */
-        for(var urlIterator = 0; urlIterator < (buildingArray.length - 1); urlIterator++){
-            var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
-            urlString += buildingArray[urlIterator];
-            urlString += "&destination=";
-            urlString += buildingArray[(urlIterator + 1)];
-            urlString += "&travelmode=";
-            urlString += transMeth;
-            console.log(urlString);
-            window.open(urlString);
         }
-		// insert here
 
+		/* iterate through array to make a url string, then launch the google maps formatted url, ignoring duplicates */
+        for(var urlIterator = (buildingArray.length - 1); urlIterator > 0; urlIterator--){
+            if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
+                console.log("duplicate ignored");
+            }
+            else{
+                var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
+                urlString += buildingArray[urlIterator - 1];
+
+                urlString += "&destination=";
+                urlString += buildingArray[(urlIterator)];
+
+                urlString += "&travelmode=";
+                urlString += transMeth;
+
+                var alignValues = "top="
+                var alignHelp = (33 * (alignCounter));
+                alignValues += alignHelp;
+                alignValues += ",left=";
+                alignValues += alignHelp;
+                alignValues += ",width=1000,height=500";
+
+                console.log(urlString);
+                console.log(alignValues);
+                window.open(urlString, "_blank", alignValues);
+                alignCounter--;
+            }
+        }
 	}
 
     render(){
