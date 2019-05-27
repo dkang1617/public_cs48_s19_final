@@ -6,7 +6,7 @@ import Spinner from './component/Spinner';
 
 
 /**********************************************/
-// import config from './config.json'; // uncomment for testing purposes
+// import config from './config.json';  //uncomment for testing purposes
 /***********************************************/
 
 /* component class from react; handles html for the main webpage, not for Maps*/
@@ -151,8 +151,6 @@ class App extends Component {
 
 	/* JSX/ html related stuff for website visuals */
     render() {
-        
-        
 
         const {
             user,
