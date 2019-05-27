@@ -69,11 +69,11 @@ class Map extends Component {
                 urlString += transMeth;
 
                 var alignValues = "top="
-                var alignHelp = (50 * (alignCounter));
+                var alignHelp = (40 * (alignCounter));
                 alignValues += alignHelp;
                 alignValues += ",left=";
                 alignValues += alignHelp;
-                alignValues += ",width=750,height=400";
+                alignValues += ",width=1000,height=550";
 
                 console.log(urlString);
                 console.log(alignValues);
@@ -125,11 +125,11 @@ class Map extends Component {
 				urlString += methodArray[(urlIterator)];
 
 				var alignValues = "top="
-				var alignHelp = (50 * (alignCounter));
+				var alignHelp = (40 * (alignCounter));
 				alignValues += alignHelp;
 				alignValues += ",left=";
 				alignValues += alignHelp;
-				alignValues += ",width=750,height=400";
+				alignValues += ",width=1000,height=550";
 
 				console.log(urlString);
 				console.log(alignValues);
