@@ -51,6 +51,11 @@ class Map extends Component {
             if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
                 console.log("duplicate ignored");
             }
+
+			else if(buildingArray[urlIterator - 1] == ""){
+				console.log("empty destination string ignored");
+			}
+
             else{
                 var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
                 urlString += buildingArray[urlIterator - 1];
@@ -84,50 +89,50 @@ class Map extends Component {
 
 		/* add all variables from input use e.target.elements.<name>.value */
 		var buildingArray = [e.target.elements.location1.value, e.target.elements.location2.value,
-							 e.target.elements.location3.value, e.target.elements.location4.value,
-						 	 e.target.elements.location5.value, e.target.elements.location6.value,
-						 	 e.target.elements.location7.value, e.target.elements.location8.value,
-					 	 	 e.target.elements.location9.value, e.target.elements.location10.value];
+			e.target.elements.location3.value, e.target.elements.location4.value,
+			e.target.elements.location5.value, e.target.elements.location6.value,
+			e.target.elements.location7.value, e.target.elements.location8.value,
+			e.target.elements.location9.value, e.target.elements.location10.value];
 
-		var methodArray = [e.target.elements.to1.value, e.target.elements.to2.value,
-						   e.target.elements.to3.value, e.target.elements.to4.value,
-						   e.target.elements.to5.value, e.target.elements.to6.value,
-						   e.target.elements.to7.value, e.target.elements.to8.value,
-					 	   e.target.elements.to9.value, e.target.elements.to10.value];
+		var methodArray = [e.target.elements.to2.value,
+			e.target.elements.to3.value, e.target.elements.to4.value,
+			e.target.elements.to5.value, e.target.elements.to6.value,
+			e.target.elements.to7.value, e.target.elements.to8.value,
+			e.target.elements.to9.value, e.target.elements.to10.value];
 
-	   /* iterate through array to make a url string, then launch the google maps formatted url, ignoring duplicates */
-       for(var urlIterator = (buildingArray.length - 1); urlIterator > 0; urlIterator--){
-           if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
-               console.log("duplicate ignored");
-           }
-		   if(buildingArray[urlIterator - 1] == ""){
-			   console.log("empty destination string ignored");
-		   }
+		/* iterate through array to make a url string, then launch the google maps formatted url, ignoring duplicates */
+    	for(var urlIterator = (buildingArray.length - 1); urlIterator > 0; urlIterator--){
+			if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
+				console.log("duplicate ignored");
+			}
 
-		   // else{
-           //     var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
-           //     urlString += buildingArray[urlIterator - 1];
-		   //
-           //     urlString += "&destination=";
-           //     urlString += buildingArray[(urlIterator)];
-		   //
-           //     urlString += "&travelmode=";
-           //     urlString += methodArray[(urlIterator)];
-		   //
-           //     var alignValues = "top="
-           //     var alignHelp = (33 * (alignCounter));
-           //     alignValues += alignHelp;
-           //     alignValues += ",left=";
-           //     alignValues += alignHelp;
-           //     alignValues += ",width=1000,height=500";
-		   //
-           //     console.log(urlString);
-           //     console.log(alignValues);
-           //     window.open(urlString, "_blank", alignValues);
-           //     alignCounter--;
-           }
-       }
+			else if(buildingArray[urlIterator] == ""){
+				console.log("empty destination string ignored");
+			}
 
+			else{
+				var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
+				urlString += buildingArray[urlIterator - 1];
+
+				urlString += "&destination=";
+				urlString += buildingArray[(urlIterator)];
+
+				urlString += "&travelmode=";
+				urlString += methodArray[(urlIterator)];
+
+				var alignValues = "top="
+				var alignHelp = (33 * (alignCounter));
+				alignValues += alignHelp;
+				alignValues += ",left=";
+				alignValues += alignHelp;
+				alignValues += ",width=1000,height=500";
+
+				console.log(urlString);
+				console.log(alignValues);
+				window.open(urlString, "_blank", alignValues);
+				alignCounter--;
+			}
+		}
 	}
     render(){
 		return(
