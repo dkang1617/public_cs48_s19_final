@@ -159,6 +159,7 @@ class App extends Component {
 
         let content = isAuthenticated ?
             (
+                <body className="bodyfirst">
                 <div>
                     <div className="mainpagetitle">
 
@@ -176,8 +177,10 @@ class App extends Component {
                     </button>
                     </div>
                 </div>
+                </body>
             ) :
             (
+                <body className="bodyfirst">
                 <div className="mainpagetitle">
                     <h1>Organized</h1>
                 <div className="Movedown">
@@ -191,6 +194,7 @@ class App extends Component {
                     />
                 </div>
                 </div>
+                </body>
             );
         return (
             <div className="App">
