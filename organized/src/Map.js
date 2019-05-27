@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import JsonParser from './JsonParser';
-
+// import godsplan from god
 class Map extends Component {
 	// cd into <repo>/organized folder
 	// npm install for dependencies
