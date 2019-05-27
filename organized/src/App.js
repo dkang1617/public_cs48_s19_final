@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
+
+
 /* make sure JsonParser.js is in the same folder as App.js */
 
 
+<<<<<<< HEAD
 /**********************************************/
 // import config from './config.json';  //uncomment for testing purposes
 /***********************************************/
+=======
+
+import config from './config.json'; // uncomment for testing purposes
+
+>>>>>>> 0c555164addf4fc57869a977e223dd22c4e7ac36
 
 /* component class from react; handles html for the main webpage, not for Maps*/
 
@@ -160,6 +168,7 @@ class App extends Component {
 
         let content = isAuthenticated ?
             (
+                <body className="bodyfirst">
                 <div>
                     <div className="mainpagetitle">
 
@@ -177,13 +186,17 @@ class App extends Component {
                     </button>
                     </div>
                 </div>
+                </body>
+            
             ) :
             (
+                
+                <body className="bodyfirst">
                 <div className="mainpagetitle">
                     <h1>Organized</h1>
                 <div className="Movedown">
                     <GoogleLogin
-                        clientId={"config.GOOGLE_CLIENT_ID"}
+                        clientId={config.GOOGLE_CLIENT_ID}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}
@@ -192,6 +205,8 @@ class App extends Component {
                     />
                 </div>
                 </div>
+                </body>
+              
             );
         return (
             <div className="App">

@@ -5,9 +5,6 @@ newtry{
 
 
 body {
-  border-style: solid;
-  border-width: 5px;
-  border-color: white;
   margin: 22px;
   width: 100wh;
   height: 92vh;
@@ -17,6 +14,38 @@ body {
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
+}
+
+
+body {
+  margin: 22px;
+  width: 100wh;
+  height: 92vh;
+  color: #fff;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, rgb(155, 26, 172), #23D5AB);
+  /*background: linear-gradient(-45deg, #23D5AB,  rgb(155, 26, 172),  #E73C7E, #EE7752);*/
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+.bodyfirst{
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  margin: 0px;
+  width: 100wh;
+  height: 92vh;
+}
+
+.bodysecond{
+  border-style: solid;
+  border-width: 5px;
+  border-color: white;
+  margin: 22px;
+  width: 100wh;
+  height: 200vh;
 }
 
 @-webkit-keyframes Gradient {
@@ -211,7 +240,7 @@ transition-duration: 0.4s;
 .Movedown {
 
   position: relative;
-  
+  text-align: center;
   top: 200px;
 }
 
@@ -231,11 +260,13 @@ transition-duration: 0.4s;
 
 .re-adjust{
   position: relative;
+  text-align: center;
   top: 280px;
 
 }
 
 .re-adjusttwo{
 position: relative;
+text-align: center;
 top: 285px;
 }
