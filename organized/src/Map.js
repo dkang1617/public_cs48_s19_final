@@ -80,9 +80,54 @@ class Map extends Component {
 		e.preventDefault();
 
 		/* initialized values using user input values and a helper integer */
-		const srcBuilding = e.target.elements.srcBuilding.value;
-		const transMeth = e.target.elements.transMeth.value;
 		var alignCounter = 5;
+
+		/* add all variables from input use e.target.elements.<name>.value */
+		var buildingArray = [e.target.elements.location1.value, e.target.elements.location2.value,
+							 e.target.elements.location3.value, e.target.elements.location4.value,
+						 	 e.target.elements.location5.value, e.target.elements.location6.value,
+						 	 e.target.elements.location7.value, e.target.elements.location8.value,
+					 	 	 e.target.elements.location9.value, e.target.elements.location10.value];
+
+		var methodArray = [e.target.elements.to1.value, e.target.elements.to2.value,
+						   e.target.elements.to3.value, e.target.elements.to4.value,
+						   e.target.elements.to5.value, e.target.elements.to6.value,
+						   e.target.elements.to7.value, e.target.elements.to8.value,
+					 	   e.target.elements.to9.value, e.target.elements.to10.value];
+
+	   /* iterate through array to make a url string, then launch the google maps formatted url, ignoring duplicates */
+       for(var urlIterator = (buildingArray.length - 1); urlIterator > 0; urlIterator--){
+           if(buildingArray[urlIterator - 1] == buildingArray[(urlIterator)]){
+               console.log("duplicate ignored");
+           }
+		   if(buildingArray[urlIterator - 1] == ""){
+			   console.log("empty destination string ignored");
+		   }
+
+		   // else{
+           //     var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
+           //     urlString += buildingArray[urlIterator - 1];
+		   //
+           //     urlString += "&destination=";
+           //     urlString += buildingArray[(urlIterator)];
+		   //
+           //     urlString += "&travelmode=";
+           //     urlString += methodArray[(urlIterator)];
+		   //
+           //     var alignValues = "top="
+           //     var alignHelp = (33 * (alignCounter));
+           //     alignValues += alignHelp;
+           //     alignValues += ",left=";
+           //     alignValues += alignHelp;
+           //     alignValues += ",width=1000,height=500";
+		   //
+           //     console.log(urlString);
+           //     console.log(alignValues);
+           //     window.open(urlString, "_blank", alignValues);
+           //     alignCounter--;
+           }
+       }
+
 	}
     render(){
 		return(
@@ -134,57 +179,57 @@ class Map extends Component {
         					<input type = "text" name="location1" placeholder= "Starting Destination"/><br/><br/>
 
 							<input type = "text" name="location2" placeholder= "2nd Destination"/><br/>
-							<input type = "radio" id="walking" name="to2nd" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to2" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to2nd" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to2" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location3" placeholder= "3rd Destination"/><br/>
-							<input type = "radio" id="walking" name="to3rd" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to3" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to3rd" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to3" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location4" placeholder= "4th Destination"/><br/>
-							<input type = "radio" id="walking" name="to4th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to4" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to4th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to4" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location5" placeholder= "5th Destination"/><br/>
-							<input type = "radio" id="walking" name="to5th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to5" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to5th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to5" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location6" placeholder= "6th Destination"/><br/>
-							<input type = "radio" id="walking" name="to6th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to6" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to6th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to6" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location7" placeholder= "7th Destination"/><br/>
-							<input type = "radio" id="walking" name="to7th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to7" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to7th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to7" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location8" placeholder= "8th Destination"/><br/>
-							<input type = "radio" id="walking" name="to8th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to8" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to8th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to8" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location9" placeholder= "9th Destination"/><br/>
-							<input type = "radio" id="walking" name="to9th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to9" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to9th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to9" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
 							<input type = "text" name="location10" placeholder= "10th Destination"/><br/>
-							<input type = "radio" id="walking" name="to10th" value= "walking" checked/>
+							<input type = "radio" id="walking" name="to10" value= "walking" checked/>
 							<label for = "walking">Walking</label>
-							<input type = "radio" id="biking" name="to10th" value= "bicycling"/>
+							<input type = "radio" id="biking" name="to10" value= "bicycling"/>
 							<label for = "biking">Biking</label><br/><br/>
 
         					<button>Submit</button>
