@@ -140,7 +140,8 @@ class Map extends Component {
 	}
     render(){
 		return(
-			<div>
+			<body className="bodysecond">
+			<div className='re-adjustthree'>
                 <div>
                 {/* website interface has a text input, storing in srcBuilding
                     the transportation method defaults to walking, but can be checked to biking
@@ -244,9 +245,11 @@ class Map extends Component {
         					<button>Submit</button>
         				</form>
                     </div>
+				
 
 
 			</div>
+			</body>
 
 		);
 	}
