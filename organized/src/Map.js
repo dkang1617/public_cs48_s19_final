@@ -59,11 +59,11 @@ class Map extends Component {
             else{
                 var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
                 urlString += buildingArray[urlIterator - 1];
-				urlString += " 93117";
+				urlString += " UC Santa Barbara";
 
                 urlString += "&destination=";
                 urlString += buildingArray[(urlIterator)];
-				urlString += " 93117";
+				urlString += " UC Santa Barbara";
 
                 urlString += "&travelmode=";
                 urlString += transMeth;
@@ -115,11 +115,11 @@ class Map extends Component {
 			else{
 				var urlString = "https://www.google.com/maps/dir/?api=1&origin=";
 				urlString += buildingArray[urlIterator - 1];
-				urlString += " 93117";
+				urlString += " UC Santa Barbara";
 
 				urlString += "&destination=";
 				urlString += buildingArray[(urlIterator)];
-				urlString += " 93117";
+				urlString += " UC Santa Barbara";
 
 				urlString += "&travelmode=";
 				urlString += methodArray[(urlIterator)];
@@ -245,7 +245,7 @@ class Map extends Component {
         					<button>Submit</button>
         				</form>
                     </div>
-				
+
 
 
 			</div>
