@@ -12,7 +12,7 @@ class Map extends Component {
         /* initialized values using user input values and a helper integer */
 		const srcBuilding = e.target.elements.srcBuilding.value;
         const transMeth = e.target.elements.transMeth.value;
-        var alignCounter = 5;
+        var alignCounter = 6;
 
 
 		/* dkang = Daniels' online API */
@@ -67,11 +67,11 @@ class Map extends Component {
                 urlString += transMeth;
 
                 var alignValues = "top="
-                var alignHelp = (33 * (alignCounter));
+                var alignHelp = (50 * (alignCounter));
                 alignValues += alignHelp;
                 alignValues += ",left=";
                 alignValues += alignHelp;
-                alignValues += ",width=1000,height=500";
+                alignValues += ",width=750,height=400";
 
                 console.log(urlString);
                 console.log(alignValues);
@@ -85,7 +85,7 @@ class Map extends Component {
 		e.preventDefault();
 
 		/* initialized values using user input values and a helper integer */
-		var alignCounter = 5;
+		var alignCounter = 8;
 
 		/* add all variables from input use e.target.elements.<name>.value */
 		var buildingArray = [e.target.elements.location1.value, e.target.elements.location2.value,
@@ -94,7 +94,7 @@ class Map extends Component {
 			e.target.elements.location7.value, e.target.elements.location8.value,
 			e.target.elements.location9.value, e.target.elements.location10.value];
 
-		var methodArray = [e.target.elements.to2.value,
+		var methodArray = ["blank", e.target.elements.to2.value,
 			e.target.elements.to3.value, e.target.elements.to4.value,
 			e.target.elements.to5.value, e.target.elements.to6.value,
 			e.target.elements.to7.value, e.target.elements.to8.value,
@@ -121,11 +121,11 @@ class Map extends Component {
 				urlString += methodArray[(urlIterator)];
 
 				var alignValues = "top="
-				var alignHelp = (33 * (alignCounter));
+				var alignHelp = (50 * (alignCounter));
 				alignValues += alignHelp;
 				alignValues += ",left=";
 				alignValues += alignHelp;
-				alignValues += ",width=1000,height=500";
+				alignValues += ",width=750,height=400";
 
 				console.log(urlString);
 				console.log(alignValues);
