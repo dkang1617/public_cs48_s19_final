@@ -2,20 +2,12 @@ import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import JsonParser from './JsonParser';
 import Spinner from './component/Spinner';
-
-
 /* make sure JsonParser.js is in the same folder as App.js */
 
 
-<<<<<<< HEAD
 /**********************************************/
-// import config from './config.json';  //uncomment for testing purposes
+ import config from './config.json';  // uncomment for testing purposes
 /***********************************************/
-=======
-
-import config from './config.json'; // uncomment for testing purposes
-
->>>>>>> 0c555164addf4fc57869a977e223dd22c4e7ac36
 
 /* component class from react; handles html for the main webpage, not for Maps*/
 
@@ -63,7 +55,7 @@ class App extends Component {
             email:response.profileObj.email
         });
         this.setIsDoneTimeout();
-        // this.makeEvent(); // spams calendar - remove comment for demo
+         this.makeEvent(); // spams calendar - remove comment for demo
     };
 
 	/* error message */
@@ -80,7 +72,7 @@ class App extends Component {
         /* dkang = Daniels' online API */
         // const apiCall = await fetch("https://my-json-server.typicode.com/dkang1617/myjsontest/Courses",{
 
-		/* local host = Krishna's json stuff - calls java */
+  		/* local host = Krishna's json stuff - calls java */
         const apiCall = await fetch("http://localhost:9000/json",{
 			/* method is GET call, mode specifies which mode - cors is the secure route */
             method:'get',
@@ -147,7 +139,7 @@ class App extends Component {
 
 	/* debug for java component */
     javaTest = async (e) =>{
-        const apiCall = await fetch("http://localhost:4567/my",{
+        const apiCall = await fetch("http://localhost:9000/json",{
             mode : "cors",
             method : "get",
         });
@@ -159,7 +151,6 @@ class App extends Component {
 
 	/* JSX/ html related stuff for website visuals */
     render() {
-
         const {
             user,
             isDone,
@@ -168,7 +159,6 @@ class App extends Component {
 
         let content = isAuthenticated ?
             (
-                <body className="bodyfirst">
                 <div>
                     <div className="mainpagetitle">
 
@@ -186,12 +176,8 @@ class App extends Component {
                     </button>
                     </div>
                 </div>
-                </body>
-            
             ) :
             (
-                
-                <body className="bodyfirst">
                 <div className="mainpagetitle">
                     <h1>Organized</h1>
                 <div className="Movedown">
@@ -205,8 +191,6 @@ class App extends Component {
                     />
                 </div>
                 </div>
-                </body>
-              
             );
         return (
             <div className="App">
