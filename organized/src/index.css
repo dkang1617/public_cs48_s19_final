@@ -17,18 +17,7 @@ body {
 }
 
 
-body {
-  margin: 22px;
-  width: 100wh;
-  height: 92vh;
-  color: #fff;
-  background: linear-gradient(-45deg, #EE7752, #E73C7E, rgb(155, 26, 172), #23D5AB);
-  /*background: linear-gradient(-45deg, #23D5AB,  rgb(155, 26, 172),  #E73C7E, #EE7752);*/
-  background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
-}
+
 
 .bodyfirst{
   border-style: solid;
@@ -45,8 +34,9 @@ body {
   border-color: white;
   margin: 22px;
   width: 100wh;
-  height: 200vh;
+  height: 145vh;
 }
+
 
 @-webkit-keyframes Gradient {
   0% {
@@ -269,4 +259,11 @@ transition-duration: 0.4s;
 position: relative;
 text-align: center;
 top: 285px;
+}
+
+.re-adjustthree{
+  position: relative;
+  text-align: center;
+  top: 100px;
+
 }
