@@ -6,7 +6,7 @@ import Spinner from './component/Spinner';
 
 
 /**********************************************/
- import config from './config.json';  // uncomment for testing purposes
+ //import config from './config.json';  // uncomment for testing purposes
 /***********************************************/
 
 /* component class from react; handles html for the main webpage, not for Maps*/
@@ -185,7 +185,7 @@ class App extends Component {
                     <h1>Organized</h1>
                 <div className="Movedown">
                     <GoogleLogin
-                        clientId={config.GOOGLE_CLIENT_ID}
+                        clientId={"config.GOOGLE_CLIENT_ID"}
                         buttonText="Login"
                         onSuccess={this.googleResponse}
                         onFailure={this.onFailure}
